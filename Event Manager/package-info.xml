@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>BoredSkull:EventManager</id>
+	<name>Event Manager</name>
+	<version>1.2.1</version>
+	<type>modification</type>
+
+	<install for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<license type="file" parsebbc="false">license.txt</license>
+
+		<require-file name="Sources/EventManager.php" destination="$sourcedir" />
+		<require-file name="Sources/EventManager-Pages.php" destination="$sourcedir" />
+		<require-file name="Themes/default/EventManager.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/eventmanager.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/eventmanager.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/languages/EventManager.english.php" destination="$languagedir" />
+
+		<database>install.php</database>
+
+		<hook hook="integrate_pre_include" function="$sourcedir/EventManager.php" />
+		<hook hook="integrate_actions" function="EM::actions" />
+		<hook hook="integrate_menu_buttons" function="EM::menuButtons" />
+		<hook hook="integrate_load_theme" function="EM::loadTheme" />
+		<hook hook="integrate_delete_members" function="EM::deleteMembers" />
+		<hook hook="integrate_fetch_alerts" function="EM::fetchAlerts" />
+		<hook hook="integrate_load_permissions" function="EM::loadPermissions" />
+		<hook hook="integrate_load_illegal_guest_permissions" function="EM::illegalGuestPermissions" />
+		<hook hook="integrate_admin_areas" function="EM::adminAreas" />
+		<hook hook="integrate_credits" function="EM::credits" />
+
+		<redirect url="?action=admin;area=eventmanager" timeout="3000" />
+	</install>
+
+	<upgrade from="1.0.0-1.2.0" for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<require-file name="Sources/EventManager.php" destination="$sourcedir" />
+		<require-file name="Sources/EventManager-Pages.php" destination="$sourcedir" />
+		<require-file name="Themes/default/EventManager.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/eventmanager.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/eventmanager.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/languages/EventManager.english.php" destination="$languagedir" />
+		<database>upgrade.php</database>
+	</upgrade>
+
+	<uninstall for="2.1.*">
+		<hook hook="integrate_pre_include" function="$sourcedir/EventManager.php" reverse="true" />
+		<hook hook="integrate_actions" function="EM::actions" reverse="true" />
+		<hook hook="integrate_menu_buttons" function="EM::menuButtons" reverse="true" />
+		<hook hook="integrate_load_theme" function="EM::loadTheme" reverse="true" />
+		<hook hook="integrate_delete_members" function="EM::deleteMembers" reverse="true" />
+		<hook hook="integrate_fetch_alerts" function="EM::fetchAlerts" reverse="true" />
+		<hook hook="integrate_load_permissions" function="EM::loadPermissions" reverse="true" />
+		<hook hook="integrate_load_illegal_guest_permissions" function="EM::illegalGuestPermissions" reverse="true" />
+		<hook hook="integrate_admin_areas" function="EM::adminAreas" reverse="true" />
+		<hook hook="integrate_credits" function="EM::credits" reverse="true" />
+
+		<!-- Always runs: removes the scheduled task so it can't call missing code -->
+		<code type="file">uninstall-task.php</code>
+
+		<!-- Runs only when "Remove all data associated with this modification" is ticked.
+		     Calendar events themselves belong to SMF and are kept. -->
+		<database>uninstall.php</database>
+
+		<remove-file name="$sourcedir/EventManager.php" />
+		<remove-file name="$sourcedir/EventManager-Pages.php" />
+		<remove-file name="$themedir/EventManager.template.php" />
+		<remove-file name="$themedir/css/eventmanager.css" />
+		<remove-file name="$themedir/scripts/eventmanager.js" />
+		<remove-file name="$languagedir/EventManager.english.php" />
+	</uninstall>
+</package-info>
