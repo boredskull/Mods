@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>BoredSkull:CommunityDigest</id>
+	<name>Community Digest</name>
+	<version>1.1.7</version>
+	<type>modification</type>
+
+	<!-- Every earlier version. Removing the 1.0 scheduled-task include hooks does nothing on later versions. -->
+	<upgrade from="1.0.0-1.1.6" for="2.1.0 - 2.1.99">
+		<readme type="file" parsebbc="false">README.md</readme>
+		<database>install.php</database>
+		<hook hook="integrate_autotask_include" function="$sourcedir/CommunityDigest-Engine.php" reverse="true" />
+		<hook hook="integrate_autotask_include" function="$sourcedir/CommunityDigest-Integrations.php" reverse="true" />
+		<require-file name="Sources/CommunityDigest.php" destination="$sourcedir" />
+		<require-file name="Sources/CommunityDigest-Engine.php" destination="$sourcedir" />
+		<require-file name="Sources/CommunityDigest-Integrations.php" destination="$sourcedir" />
+		<require-file name="Themes/default/CommunityDigest.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/community_digest.css" destination="$themedir/css" />
+		<require-file name="Themes/default/languages/CommunityDigest.english.php" destination="$languagedir" />
+	</upgrade>
+
+	<install for="2.1.0 - 2.1.99">
+		<readme type="file" parsebbc="false">README.md</readme>
+		<license type="file">LICENSE.txt</license>
+
+		<database>install.php</database>
+
+		<require-file name="Sources/CommunityDigest.php" destination="$sourcedir" />
+		<require-file name="Sources/CommunityDigest-Engine.php" destination="$sourcedir" />
+		<require-file name="Sources/CommunityDigest-Integrations.php" destination="$sourcedir" />
+		<require-file name="Themes/default/CommunityDigest.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/community_digest.css" destination="$themedir/css" />
+		<require-file name="Themes/default/languages/CommunityDigest.english.php" destination="$languagedir" />
+
+		<hook hook="integrate_actions" function="CommunityDigest::hookActions" file="$sourcedir/CommunityDigest.php" />
+		<hook hook="integrate_menu_buttons" function="CommunityDigest::hookMenu" file="$sourcedir/CommunityDigest.php" />
+		<hook hook="integrate_admin_areas" function="CommunityDigest::hookAdminAreas" file="$sourcedir/CommunityDigest.php" />
+		<hook hook="integrate_profile_areas" function="CommunityDigest::hookProfileAreas" file="$sourcedir/CommunityDigest.php" />
+		<hook hook="integrate_credits" function="CommunityDigest::hookCredits" file="$sourcedir/CommunityDigest.php" />
+		<hook hook="integrate_alert_types" function="CommunityDigest::hookAlertTypes" file="$sourcedir/CommunityDigest.php" />
+		<hook hook="integrate_fetch_alerts" function="CommunityDigest::hookFetchAlerts" file="$sourcedir/CommunityDigest.php" />
+		<hook hook="integrate_mod_buttons" function="CommunityDigest::hookModButtons" file="$sourcedir/CommunityDigest.php" />
+		<hook hook="integrate_whos_online" function="CommunityDigest::hookWhosOnline" file="$sourcedir/CommunityDigest.php" />
+		<hook hook="integrate_delete_members" function="CommunityDigest::hookDeleteMembers" file="$sourcedir/CommunityDigest.php" />
+
+		<redirect url="?action=admin;area=communitydigest" timeout="3000" />
+	</install>
+
+	<uninstall for="2.1.0 - 2.1.99">
+		<hook hook="integrate_actions" function="CommunityDigest::hookActions" file="$sourcedir/CommunityDigest.php" reverse="true" />
+		<hook hook="integrate_menu_buttons" function="CommunityDigest::hookMenu" file="$sourcedir/CommunityDigest.php" reverse="true" />
+		<hook hook="integrate_admin_areas" function="CommunityDigest::hookAdminAreas" file="$sourcedir/CommunityDigest.php" reverse="true" />
+		<hook hook="integrate_profile_areas" function="CommunityDigest::hookProfileAreas" file="$sourcedir/CommunityDigest.php" reverse="true" />
+		<hook hook="integrate_credits" function="CommunityDigest::hookCredits" file="$sourcedir/CommunityDigest.php" reverse="true" />
+		<hook hook="integrate_alert_types" function="CommunityDigest::hookAlertTypes" file="$sourcedir/CommunityDigest.php" reverse="true" />
+		<hook hook="integrate_fetch_alerts" function="CommunityDigest::hookFetchAlerts" file="$sourcedir/CommunityDigest.php" reverse="true" />
+		<hook hook="integrate_mod_buttons" function="CommunityDigest::hookModButtons" file="$sourcedir/CommunityDigest.php" reverse="true" />
+		<hook hook="integrate_whos_online" function="CommunityDigest::hookWhosOnline" file="$sourcedir/CommunityDigest.php" reverse="true" />
+		<hook hook="integrate_delete_members" function="CommunityDigest::hookDeleteMembers" file="$sourcedir/CommunityDigest.php" reverse="true" />
+
+		<code>uninstall-task.php</code>
+		<database>uninstall-db.php</database>
+
+		<remove-file name="$sourcedir/CommunityDigest.php" />
+		<remove-file name="$sourcedir/CommunityDigest-Engine.php" />
+		<remove-file name="$sourcedir/CommunityDigest-Integrations.php" />
+		<remove-file name="$themedir/CommunityDigest.template.php" />
+		<remove-file name="$themedir/css/community_digest.css" />
+		<remove-file name="$languagedir/CommunityDigest.english.php" />
+	</uninstall>
+</package-info>
