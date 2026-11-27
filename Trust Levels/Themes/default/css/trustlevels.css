@@ -1,0 +1,161 @@
+/**
+ * Trust Levels
+ * BoredSkull https://boredskull.net (c) 2026, ISC licence
+ *
+ * Text uses the theme's colour and backgrounds are translucent, so this
+ * suits light and dark themes. Each level's colour comes from --tl-color.
+ */
+
+/* ===== Badge ===== */
+.tl-badge {
+	--tl-color: #7a7a7a;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35em;
+	padding: 0.2em 0.75em 0.2em 0.6em;
+	border-radius: 1em;
+	border: 1px solid var(--tl-color);
+	background: color-mix(in srgb, var(--tl-color) 14%, transparent);
+	color: inherit;
+	font-weight: bold;
+	font-size: 0.95em;
+	line-height: 1.3;
+	white-space: nowrap;
+	vertical-align: middle;
+}
+@supports not (background: color-mix(in srgb, red 10%, transparent)) {
+	.tl-badge { background: rgba(127, 127, 127, 0.1); }
+}
+.tl-badge::before {
+	content: "";
+	width: 0.55em;
+	height: 0.55em;
+	border-radius: 50%;
+	background: var(--tl-color);
+	flex: 0 0 auto;
+}
+.tl-badge-small { font-size: 0.78em; padding: 0.1em 0.6em 0.1em 0.5em; }
+.poster li.custom.trust_level { margin: 0.25em 0; list-style: none; }
+
+/* ===== Profile ===== */
+.tl_current { display: flex; gap: 1.2em; align-items: center; flex-wrap: wrap; }
+.tl_current_badge .tl-badge { font-size: 1.35em; padding: 0.35em 1em 0.35em 0.8em; }
+.tl_current_name { font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.7; }
+.tl_current_desc { margin: 0.2em 0 0; }
+
+.tl_ladder {
+	display: flex;
+	list-style: none;
+	margin: 1.4em 0 0.4em;
+	padding: 0;
+	counter-reset: tl;
+}
+.tl_ladder li {
+	--tl-color: #7a7a7a;
+	flex: 1 1 0;
+	position: relative;
+	text-align: center;
+	font-size: 0.85em;
+	min-width: 0;
+}
+.tl_ladder li::before {
+	content: "";
+	position: absolute;
+	top: 0.55em;
+	left: -50%;
+	width: 100%;
+	height: 3px;
+	background: rgba(127, 127, 127, 0.3);
+	z-index: 0;
+}
+.tl_ladder li:first-child::before { display: none; }
+.tl_ladder li.tl_done::before, .tl_ladder li.tl_here::before { background: var(--tl-color); }
+.tl_step_dot {
+	position: relative;
+	z-index: 1;
+	display: block;
+	width: 1.1em;
+	height: 1.1em;
+	margin: 0 auto 0.35em;
+	border-radius: 50%;
+	border: 3px solid var(--tl-color);
+	background: transparent;
+	box-sizing: border-box;
+}
+.tl_done .tl_step_dot, .tl_here .tl_step_dot { background: var(--tl-color); }
+.tl_here .tl_step_dot { box-shadow: 0 0 0 4px color-mix(in srgb, var(--tl-color) 30%, transparent); }
+.tl_todo .tl_step_name { opacity: 0.6; }
+.tl_here .tl_step_name { font-weight: bold; }
+.tl_step_name { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0 0.2em; }
+
+.tl_reqs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0.8em 1.4em; }
+.tl_req_label { display: flex; justify-content: space-between; gap: 1em; font-size: 0.9em; margin-bottom: 0.3em; }
+.tl_req_label span:first-child::before { margin-right: 0.4em; font-weight: bold; }
+.tl_met .tl_req_label span:first-child::before { content: "\2713"; color: #3c8f4e; }
+.tl_unmet .tl_req_label span:first-child::before { content: "\25CB"; opacity: 0.6; }
+
+.tl_bar { height: 0.55em; border-radius: 1em; background: rgba(127, 127, 127, 0.22); overflow: hidden; }
+.tl_bar > div { height: 100%; border-radius: inherit; background: #3d8fb8; transition: width 0.4s; }
+.tl_met .tl_bar > div { background: #3c8f4e; }
+.tl_bar_big { height: 1em; margin: 0.4em 0 0.8em; }
+
+.tl_limits { display: grid; grid-template-columns: max-content 1fr; gap: 0.4em 1.5em; margin: 0; }
+.tl_limits dt { font-weight: bold; }
+.tl_limits dd { margin: 0; }
+
+/* ===== Admin ===== */
+.tl_list { margin: 0.3em 0 0 1.2em; }
+.tl_level_card { border: 1px solid rgba(127, 127, 127, 0.3); border-radius: 8px; margin: 0 0 0.8em; padding: 0.4em 1em 1em; }
+.tl_card_head { display: flex; align-items: center; gap: 1em; padding: 0 0.4em; font-weight: bold; }
+.tl_card_tools .button { padding: 0 0.6em; min-height: 1.8em; }
+.tl_grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 0.6em 1em; margin: 0.6em 0; }
+.tl_grid_small { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+.tl_grid label { display: flex; flex-direction: column; gap: 0.2em; font-size: 0.88em; }
+.tl_grid label.tl_check { flex-direction: row; align-items: center; gap: 0.4em; }
+.tl_grid .tl_wide { grid-column: 1 / -1; }
+.tl_grid input[type="color"] { width: 3.2em; height: 2em; padding: 0; border: 0; background: none; }
+.tl_grid textarea, .tl_grid input[type="text"] { width: 100%; box-sizing: border-box; }
+.tl_cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5em; }
+.tl_cols h4 { margin: 0.4em 0 0; }
+.tl_level_card[data-first] .tl_not_first { display: none !important; }
+.tl_level_card:not([data-first]) .tl_first_only { display: none; }
+.tl_level_card details { margin-top: 0.6em; }
+.tl_level_card summary { cursor: pointer; font-weight: bold; }
+
+.tl_summary { display: flex; flex-wrap: wrap; gap: 0.6em; }
+.tl_summary_item {
+	--tl-color: rgba(127, 127, 127, 0.6);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 6em;
+	padding: 0.5em 0.8em;
+	border: 1px solid rgba(127, 127, 127, 0.3);
+	border-top: 3px solid var(--tl-color);
+	border-radius: 6px;
+	color: inherit !important;
+	text-decoration: none !important;
+}
+.tl_summary_item strong { font-size: 1.3em; }
+.tl_summary_item span { font-size: 0.85em; opacity: 0.8; }
+.tl_summary_item.tl_active, .tl_summary_item:hover { background: rgba(127, 127, 127, 0.1); }
+
+@media (max-width: 720px) {
+	.tl_cols { grid-template-columns: 1fr; }
+	.tl_ladder { flex-wrap: wrap; row-gap: 0.8em; }
+	.tl_ladder li { flex: 1 0 25%; }
+	.tl_ladder li::before { display: none; }
+	.tl_limits { grid-template-columns: 1fr; }
+	.tl_limits dd { margin-bottom: 0.4em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.tl_bar > div { transition: none; }
+}
+
+/* 1.1: history events and probation */
+.tl_event { display: inline-block; padding: 1px 7px; margin-right: 4px; border-radius: 10px; font-size: 0.85em; font-weight: bold; background: #e4e8ec; color: #444; }
+.tl_event_lock { background: #fdecc8; color: #8a5a00; }
+.tl_event_unlock { background: #e3f1e5; color: #2e6b3a; }
+.tl_event_held { background: #f6dcd9; color: #a3332a; }
+.tl_probation_note { color: #a3332a; }

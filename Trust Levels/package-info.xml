@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>BoredSkull:TrustLevels</id>
+	<name>Trust Levels</name>
+	<version>1.1.1</version>
+	<type>modification</type>
+
+	<install for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<license type="file" parsebbc="false">license.txt</license>
+
+		<require-file name="Sources/TrustLevels.php" destination="$sourcedir" />
+		<require-file name="Sources/TrustLevels-Admin.php" destination="$sourcedir" />
+		<require-file name="Themes/default/TrustLevels.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/trustlevels.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/trustlevels-admin.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/languages/TrustLevels.english.php" destination="$languagedir" />
+
+		<!-- After the files: it uses the TrustLevels class -->
+		<database>install.php</database>
+
+		<hook hook="integrate_pre_include" function="$sourcedir/TrustLevels.php" />
+		<hook hook="integrate_load_theme" function="TrustLevels::loadTheme" />
+		<hook hook="integrate_post2_pre" function="TrustLevels::post2Pre" />
+		<hook hook="integrate_preparsecode" function="TrustLevels::preparse" />
+		<hook hook="integrate_after_create_post" function="TrustLevels::afterPost" />
+		<hook hook="integrate_display_message_list" function="TrustLevels::displayMessageList" />
+		<hook hook="integrate_prepare_display_context" function="TrustLevels::prepareDisplay" />
+		<hook hook="integrate_profile_areas" function="TrustLevels::profileAreas" />
+		<hook hook="integrate_admin_areas" function="TrustLevels::adminAreas" />
+		<hook hook="integrate_load_permissions" function="TrustLevels::loadPermissions" />
+		<hook hook="integrate_load_illegal_guest_permissions" function="TrustLevels::illegalGuestPermissions" />
+		<hook hook="integrate_credits" function="TrustLevels::credits" />
+		<hook hook="integrate_delete_members" function="TrustLevels::deleteMembers" />
+
+		<redirect url="?action=admin;area=trustlevels;sa=levels" timeout="3000" />
+	</install>
+
+	<upgrade from="1.0.*, 1.1.0" for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<require-file name="Sources/TrustLevels.php" destination="$sourcedir" />
+		<require-file name="Sources/TrustLevels-Admin.php" destination="$sourcedir" />
+		<require-file name="Themes/default/TrustLevels.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/trustlevels.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/trustlevels-admin.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/languages/TrustLevels.english.php" destination="$languagedir" />
+
+		<!-- Adds the new columns and table, keeps all existing data -->
+		<database>install.php</database>
+
+		<hook hook="integrate_delete_members" function="TrustLevels::deleteMembers" />
+	</upgrade>
+
+	<uninstall for="2.1.*">
+		<hook hook="integrate_pre_include" function="$sourcedir/TrustLevels.php" reverse="true" />
+		<hook hook="integrate_load_theme" function="TrustLevels::loadTheme" reverse="true" />
+		<hook hook="integrate_post2_pre" function="TrustLevels::post2Pre" reverse="true" />
+		<hook hook="integrate_preparsecode" function="TrustLevels::preparse" reverse="true" />
+		<hook hook="integrate_after_create_post" function="TrustLevels::afterPost" reverse="true" />
+		<hook hook="integrate_display_message_list" function="TrustLevels::displayMessageList" reverse="true" />
+		<hook hook="integrate_prepare_display_context" function="TrustLevels::prepareDisplay" reverse="true" />
+		<hook hook="integrate_profile_areas" function="TrustLevels::profileAreas" reverse="true" />
+		<hook hook="integrate_admin_areas" function="TrustLevels::adminAreas" reverse="true" />
+		<hook hook="integrate_load_permissions" function="TrustLevels::loadPermissions" reverse="true" />
+		<hook hook="integrate_load_illegal_guest_permissions" function="TrustLevels::illegalGuestPermissions" reverse="true" />
+		<hook hook="integrate_credits" function="TrustLevels::credits" reverse="true" />
+		<hook hook="integrate_delete_members" function="TrustLevels::deleteMembers" reverse="true" />
+
+		<!-- Always runs: removes the scheduled task so it can't call missing code -->
+		<code type="file">uninstall-task.php</code>
+		<!-- Runs only when "Remove all data associated with this modification" is ticked -->
+		<database>uninstall.php</database>
+
+		<remove-file name="$sourcedir/TrustLevels.php" />
+		<remove-file name="$sourcedir/TrustLevels-Admin.php" />
+		<remove-file name="$themedir/TrustLevels.template.php" />
+		<remove-file name="$themedir/css/trustlevels.css" />
+		<remove-file name="$themedir/scripts/trustlevels-admin.js" />
+		<remove-file name="$languagedir/TrustLevels.english.php" />
+	</uninstall>
+</package-info>
