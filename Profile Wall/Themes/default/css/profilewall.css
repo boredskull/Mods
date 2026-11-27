@@ -1,0 +1,234 @@
+/* Profile Wall for SMF 2.1.x */
+#profile_wall .pw_count {
+	float: right;
+	font-size: 0.85em;
+	font-weight: normal;
+	opacity: 0.8;
+}
+.pw_post_form {
+	margin: 6px 0 12px;
+}
+.pw_form_title {
+	margin: 0 0 8px;
+}
+.pw_form_buttons {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 8px;
+	margin-top: 8px;
+}
+.pw_form_buttons .smalltext {
+	margin-right: auto;
+}
+.pw_settings summary {
+	cursor: pointer;
+	font-weight: bold;
+}
+.pw_settings form {
+	margin-top: 10px;
+}
+.pw_empty {
+	padding: 24px;
+}
+
+/* Comment card */
+.pw_comment {
+	display: flex;
+	gap: 14px;
+	margin: 6px 0;
+}
+.pw_comment.pw_pinned {
+	border-left: 4px solid #e8a33d;
+}
+.pw_comment.pw_pending {
+	opacity: 0.85;
+	border-left: 4px dashed #c96;
+}
+.pw_poster {
+	flex: 0 0 120px;
+	text-align: center;
+	word-break: break-word;
+}
+.pw_avatar img {
+	max-width: 80px;
+	max-height: 80px;
+	border-radius: 50%;
+}
+.pw_avatar_blank {
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0.08);
+}
+.pw_poster_name {
+	font-weight: bold;
+	margin-top: 4px;
+}
+.pw_online {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #3c9a3c;
+	vertical-align: middle;
+}
+.pw_main {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+.pw_meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px;
+	padding-bottom: 4px;
+	margin-bottom: 6px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.pw_time {
+	margin-left: auto;
+}
+.pw_edited {
+	font-style: italic;
+	opacity: 0.75;
+	width: 100%;
+	text-align: right;
+}
+.pw_body {
+	overflow-wrap: anywhere;
+	line-height: 1.5;
+}
+.pw_body img {
+	max-width: 100%;
+}
+.pw_buttons {
+	margin-top: 6px;
+}
+.pw_liked {
+	font-weight: bold;
+}
+
+/* Badges */
+.pw_badge {
+	display: inline-block;
+	padding: 1px 7px;
+	border-radius: 10px;
+	font-size: 0.8em;
+	background: rgba(0, 0, 0, 0.08);
+}
+.pw_badge_owner {
+	background: #dbe9f9;
+	color: #2a5a8a;
+}
+.pw_badge_pinned {
+	background: #fbe7c6;
+	color: #8a5a10;
+}
+.pw_badge_pending {
+	background: #f8dede;
+	color: #8a2a2a;
+}
+
+/* Replies */
+.pw_replies {
+	margin-top: 10px;
+	padding-left: 10px;
+	border-left: 2px solid rgba(0, 0, 0, 0.08);
+}
+.pw_is_reply {
+	padding: 8px 0;
+	margin: 0;
+	gap: 10px;
+}
+.pw_is_reply + .pw_is_reply {
+	border-top: 1px dashed rgba(0, 0, 0, 0.08);
+}
+.pw_is_reply .pw_poster {
+	flex: 0 0 40px;
+}
+.pw_is_reply .pw_avatar img,
+.pw_is_reply .pw_avatar_blank,
+.pw_avatar_small img,
+.pw_avatar_small.pw_avatar_blank {
+	max-width: 36px;
+	max-height: 36px;
+	width: 36px;
+	height: 36px;
+}
+.pw_reply_box {
+	margin-top: 8px;
+}
+.pw_reply_box summary {
+	cursor: pointer;
+	display: inline-block;
+	font-size: 0.9em;
+}
+.pw_reply_box textarea,
+.pw_post_form textarea {
+	width: 100%;
+	box-sizing: border-box;
+	margin-top: 6px;
+}
+.pw_reply_actions {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 8px;
+	margin-top: 4px;
+}
+.pw_counter {
+	margin-right: auto;
+	opacity: 0.75;
+}
+.pw_counter.pw_over {
+	color: #b00;
+	font-weight: bold;
+	opacity: 1;
+}
+
+/* Summary preview */
+.pw_summary {
+	margin-top: 12px;
+}
+.pw_summary_list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.pw_summary_list li {
+	display: flex;
+	gap: 10px;
+	padding: 6px 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.pw_summary_list .pw_time {
+	margin-left: 6px;
+}
+
+/* Admin */
+.pw_admin_body {
+	max-width: 520px;
+	overflow-wrap: anywhere;
+}
+.pw_report_item .pw_reason {
+	margin: 8px 0;
+}
+
+@media (max-width: 720px) {
+	.pw_comment:not(.pw_is_reply) {
+		flex-direction: column;
+	}
+	.pw_comment:not(.pw_is_reply) .pw_poster {
+		flex: none;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		text-align: left;
+	}
+	.pw_comment:not(.pw_is_reply) .pw_avatar img {
+		max-width: 40px;
+		max-height: 40px;
+	}
+}
