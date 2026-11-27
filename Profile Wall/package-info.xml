@@ -3,7 +3,7 @@
 <package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
 	<id>BoredSkull:ProfileWall</id>
 	<name>Profile Wall</name>
-	<version>1.1.0</version>
+	<version>1.1.2</version>
 	<type>modification</type>
 
 	<install for="2.1.*">
@@ -23,6 +23,7 @@
 		<hook hook="integrate_load_permissions" function="pw_load_permissions" file="$sourcedir/ProfileWall-Hooks.php" />
 		<hook hook="integrate_load_illegal_guest_permissions" function="pw_illegal_guest_permissions" file="$sourcedir/ProfileWall-Hooks.php" />
 		<hook hook="integrate_post_ban_permissions" function="pw_ban_permissions" file="$sourcedir/ProfileWall-Hooks.php" />
+		<hook hook="integrate_fetch_alerts" function="pw_fetch_alerts" file="$sourcedir/ProfileWall-Hooks.php" />
 		<hook hook="integrate_alert_types" function="pw_alert_types" file="$sourcedir/ProfileWall-Hooks.php" />
 		<hook hook="integrate_delete_members" function="pw_delete_members" file="$sourcedir/ProfileWall-Hooks.php" />
 		<hook hook="integrate_credits" function="pw_credits" file="$sourcedir/ProfileWall-Hooks.php" />
@@ -39,6 +40,18 @@
 		<require-file name="Themes/default/languages/ProfileWall.english.php" destination="$languagedir" />
 		<require-file name="Themes/default/css/profilewall.css" destination="$themedir/css" />
 		<require-file name="Themes/default/scripts/profilewall.js" destination="$themedir/scripts" />
+		<hook hook="integrate_fetch_alerts" function="pw_fetch_alerts" file="$sourcedir/ProfileWall-Hooks.php" />
+	</upgrade>
+
+	<upgrade from="1.1.0,1.1.1" for="2.1.*">
+		<readme parsebbc="true">readme.txt</readme>
+		<require-file name="Sources/ProfileWall.php" destination="$sourcedir" />
+		<require-file name="Sources/ProfileWall-Hooks.php" destination="$sourcedir" />
+		<require-file name="Themes/default/ProfileWall.template.php" destination="$themedir" />
+		<require-file name="Themes/default/languages/ProfileWall.english.php" destination="$languagedir" />
+		<require-file name="Themes/default/css/profilewall.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/profilewall.js" destination="$themedir/scripts" />
+		<hook hook="integrate_fetch_alerts" function="pw_fetch_alerts" file="$sourcedir/ProfileWall-Hooks.php" />
 	</upgrade>
 
 	<uninstall for="2.1.*">
@@ -48,6 +61,7 @@
 		<hook hook="integrate_load_permissions" function="pw_load_permissions" file="$sourcedir/ProfileWall-Hooks.php" reverse="true" />
 		<hook hook="integrate_load_illegal_guest_permissions" function="pw_illegal_guest_permissions" file="$sourcedir/ProfileWall-Hooks.php" reverse="true" />
 		<hook hook="integrate_post_ban_permissions" function="pw_ban_permissions" file="$sourcedir/ProfileWall-Hooks.php" reverse="true" />
+		<hook hook="integrate_fetch_alerts" function="pw_fetch_alerts" file="$sourcedir/ProfileWall-Hooks.php" reverse="true" />
 		<hook hook="integrate_alert_types" function="pw_alert_types" file="$sourcedir/ProfileWall-Hooks.php" reverse="true" />
 		<hook hook="integrate_delete_members" function="pw_delete_members" file="$sourcedir/ProfileWall-Hooks.php" reverse="true" />
 		<hook hook="integrate_credits" function="pw_credits" file="$sourcedir/ProfileWall-Hooks.php" reverse="true" />

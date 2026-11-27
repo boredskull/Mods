@@ -26,7 +26,7 @@ function pw_credits()
 	global $context, $txt;
 
 	loadLanguage('ProfileWall');
-	$context['copyrights']['mods'][] = sprintf($txt['pw_credits'], '1.1.0');
+	$context['copyrights']['mods'][] = sprintf($txt['pw_credits'], '1.1.2');
 }
 
 /**
@@ -137,6 +137,29 @@ function pw_ban_permissions(&$denied_permissions)
 }
 
 /**
+ * Give both SMF alert views a link to the comment, including alerts saved before 1.1.2.
+ */
+function pw_fetch_alerts(&$alerts, &$formats)
+{
+	global $scripturl;
+
+	foreach ($alerts as &$alert)
+	{
+		if ($alert['content_type'] !== 'pwall' || empty($alert['extra']['wall_link']))
+			continue;
+
+		// Recover the wall owner from the stored link. The content ID identifies the comment.
+		if (preg_match('~[?;&]u=([0-9]+)(?:[;&]|$)~', $alert['extra']['wall_link'], $match))
+		{
+			$id = (int) $alert['content_id'];
+			$link = $scripturl . '?action=profile;u=' . (int) $match[1] . ';area=wall;comment=' . $id . '#pw' . $id;
+			$alert['extra']['content_link'] = $link;
+			$alert['extra']['wall_link'] = $link;
+		}
+	}
+}
+
+/**
  * integrate_alert_types - lets members switch wall alerts on/off in their notification settings.
  */
 function pw_alert_types(&$alert_types, &$group_options)
@@ -145,6 +168,9 @@ function pw_alert_types(&$alert_types, &$group_options)
 
 	if (empty($modSettings['pw_enabled']))
 		return;
+
+	// Ensure notification preference labels are loaded before SMF renders them.
+	loadLanguage('ProfileWall');
 
 	$alert_types['profile_wall'] = array(
 		'pw_new' => array('alert' => 'yes', 'email' => 'never'),

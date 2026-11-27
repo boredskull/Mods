@@ -1,4 +1,4 @@
-[size=14pt][b]Profile Wall v1.1.0[/b][/size] for SMF 2.1.x
+[size=14pt][b]Profile Wall v1.1.2[/b][/size] for SMF 2.1.x
 
 Adds a comment "Wall" tab to every member's profile. Written from scratch, 100% hook-based: no core files are edited.
 
@@ -34,6 +34,19 @@ Adds a comment "Wall" tab to every member's profile. Written from scratch, 100% 
 [b]Permissions:[/b] Admin > Members > Permissions > (group) > "Profile Wall"
 
 Default permissions on install: guests can view; regular members can view, post, edit/delete own; global moderators can moderate.
+
+[b]Version 1.1.2 changes[/b]
+[list]
+[li]Added the four missing permission labels on the Profile Wall settings page.[/li]
+[li]Wall alerts now open the linked comment or reply from the notification dropdown, including on older wall pages.[/li]
+[/list]
+
+[b]Version 1.1.1 changes[/b]
+[list]
+[li]Corrected the notification preference language keys for wall comments, replies and likes to match SMF 2.1.x[/li]
+[li]Load Profile Wall language strings explicitly when registering alert preferences[/li]
+[li]Added a data-preserving upgrade path from v1.1.0; existing comments, likes, permissions and settings are retained[/li]
+[/list]
 
 [b]Version 1.1.0 changes[/b]
 [list]

@@ -65,15 +65,21 @@ $txt['pw_view_wall'] = 'View wall';
 
 // Alerts
 $txt['alert_group_profile_wall'] = 'Profile wall';
-$txt['alert_opt_pw_new'] = 'When someone comments on my wall';
-$txt['alert_opt_pw_reply'] = 'When someone replies to my wall comment';
-$txt['alert_opt_pw_like'] = 'When someone likes my wall comment';
+$txt['alert_pw_new'] = 'When someone comments on my wall';
+$txt['alert_pw_reply'] = 'When someone replies to my wall comment';
+$txt['alert_pw_like'] = 'When someone likes my wall comment';
 $txt['alert_pwall_new'] = '{member_link} left a comment on <a href="{wall_link}">your wall</a>';
 $txt['alert_pwall_reply'] = '{member_link} replied to your comment on <a href="{wall_link}">{wall_name}\'s wall</a>';
 $txt['alert_pwall_like'] = '{member_link} liked your comment on <a href="{wall_link}">{wall_name}\'s wall</a>';
 $txt['alert_pwall_pending'] = '{member_link} left a comment on <a href="{wall_link}">your wall</a> that needs your approval';
 $txt['pw_pm_subject'] = 'New comment on your wall';
 $txt['pw_pm_body'] = '%1$s left a comment on your profile wall.' . "\n\n" . '[url=%2$s]Read it here[/url]';
+
+// Inline permissions on the Profile Wall settings page.
+$txt['profile_wall_view'] = 'View profile walls';
+$txt['profile_wall_post'] = 'Post wall comments';
+$txt['profile_wall_autoapprove'] = 'Post wall comments without approval';
+$txt['profile_wall_moderate'] = 'Moderate profile walls';
 
 // Permissions
 $txt['permissiongroup_profile_wall'] = 'Profile Wall';

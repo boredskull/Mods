@@ -394,6 +394,27 @@ function pw_view($memID)
 	$smcFunc['db_free_result']($request);
 
 	$start = isset($_REQUEST['start']) ? max(0, (int) $_REQUEST['start']) : 0;
+	// Find the current page even if newer comments or pins have moved the target.
+	if (!empty($_GET['comment']))
+	{
+		$request = $smcFunc['db_query']('', '
+			SELECT COUNT(*)
+			FROM {db_prefix}pw_comments AS target
+				INNER JOIN {db_prefix}pw_comments AS parent ON (parent.id_comment = CASE
+					WHEN target.id_parent = 0 THEN target.id_comment ELSE target.id_parent END)
+				INNER JOIN {db_prefix}pw_comments AS c ON (c.id_profile = parent.id_profile AND c.id_parent = 0)
+			WHERE target.id_comment = {int:target} AND target.id_profile = {int:member}
+				AND parent.id_profile = {int:member}
+				AND (c.pinned > parent.pinned OR (c.pinned = parent.pinned AND c.id_comment > parent.id_comment))
+				AND ' . $visible . '
+				AND ' . str_replace('c.', 'target.', $visible) . '
+				AND ' . str_replace('c.', 'parent.', $visible),
+			$params + array('target' => (int) $_GET['comment'])
+		);
+		list ($preceding) = $smcFunc['db_fetch_row']($request);
+		$smcFunc['db_free_result']($request);
+		$start = intdiv((int) $preceding, $per_page) * $per_page;
+	}
 	$context['pw']['page_index'] = constructPageIndex($context['pw']['url'], $start, (int) $total, $per_page);
 	$context['pw']['total'] = (int) $total;
 
