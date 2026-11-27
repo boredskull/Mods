@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>BoredSkull:RichLinkPreviews</id>
+	<name>Rich Link Previews</name>
+	<version>1.0.3</version>
+	<type>modification</type>
+
+	<install for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<license type="file" parsebbc="false">license.txt</license>
+
+		<database>install.php</database>
+
+		<require-file name="Sources/RichLinks.php" destination="$sourcedir" />
+		<require-file name="Sources/tasks/RichLinks-Fetch.php" destination="$sourcedir/tasks" />
+		<require-file name="Themes/default/RichLinks.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/richlinks.css" destination="$themedir/css" />
+		<require-file name="Themes/default/languages/RichLinks.english.php" destination="$languagedir" />
+
+		<hook hook="integrate_pre_include" function="$sourcedir/RichLinks.php" />
+		<hook hook="integrate_after_create_post" function="RichLinks::afterCreatePost" />
+		<hook hook="integrate_modify_post" function="RichLinks::modifyPost" />
+		<hook hook="integrate_remove_message" function="RichLinks::removeMessage" />
+		<hook hook="integrate_display_message_list" function="RichLinks::displayMessageList" />
+		<hook hook="integrate_prepare_display_context" function="RichLinks::prepareDisplayContext" />
+		<hook hook="integrate_admin_areas" function="RichLinks::adminAreas" />
+		<hook hook="integrate_modify_modifications" function="RichLinks::modifyModifications" />
+		<hook hook="integrate_credits" function="RichLinks::credits" />
+
+		<redirect url="?action=admin;area=modsettings;sa=richlinks" timeout="3000" />
+	</install>
+
+	<upgrade from="1.0.*" for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<require-file name="Sources/RichLinks.php" destination="$sourcedir" />
+		<require-file name="Sources/tasks/RichLinks-Fetch.php" destination="$sourcedir/tasks" />
+		<require-file name="Themes/default/RichLinks.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/richlinks.css" destination="$themedir/css" />
+		<require-file name="Themes/default/languages/RichLinks.english.php" destination="$languagedir" />
+	</upgrade>
+
+	<uninstall for="2.1.*">
+		<hook hook="integrate_pre_include" function="$sourcedir/RichLinks.php" reverse="true" />
+		<hook hook="integrate_after_create_post" function="RichLinks::afterCreatePost" reverse="true" />
+		<hook hook="integrate_modify_post" function="RichLinks::modifyPost" reverse="true" />
+		<hook hook="integrate_remove_message" function="RichLinks::removeMessage" reverse="true" />
+		<hook hook="integrate_display_message_list" function="RichLinks::displayMessageList" reverse="true" />
+		<hook hook="integrate_prepare_display_context" function="RichLinks::prepareDisplayContext" reverse="true" />
+		<hook hook="integrate_admin_areas" function="RichLinks::adminAreas" reverse="true" />
+		<hook hook="integrate_modify_modifications" function="RichLinks::modifyModifications" reverse="true" />
+		<hook hook="integrate_credits" function="RichLinks::credits" reverse="true" />
+
+		<!-- Remove queued tasks even when the administrator preserves cached data. -->
+		<code>uninstall-tasks.php</code>
+
+		<!-- Runs only when "Remove all data associated with this modification" is ticked -->
+		<database>uninstall.php</database>
+
+		<remove-file name="$sourcedir/RichLinks.php" />
+		<remove-file name="$sourcedir/tasks/RichLinks-Fetch.php" />
+		<remove-file name="$themedir/RichLinks.template.php" />
+		<remove-file name="$themedir/css/richlinks.css" />
+		<remove-file name="$languagedir/RichLinks.english.php" />
+	</uninstall>
+</package-info>

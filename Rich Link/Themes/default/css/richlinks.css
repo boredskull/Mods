@@ -1,0 +1,184 @@
+/**
+ * Rich Link Previews
+ * BoredSkull https://boredskull.net (c) 2026, ISC licence
+ *
+ * The colours are translucent and the text inherits the theme's colour,
+ * so cards suit light and dark themes without extra rules. You can
+ * override the variables below in your theme's CSS.
+ */
+
+.richlinks {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	max-width: 640px;
+	margin: 14px 0 4px;
+	clear: both;
+}
+
+.richlink {
+	--rl-bg: rgba(127, 127, 127, 0.07);
+	--rl-bg-hover: rgba(127, 127, 127, 0.14);
+	--rl-border: rgba(127, 127, 127, 0.28);
+	--rl-accent: rgba(127, 127, 127, 0.55);
+	--rl-thumb-bg: rgba(127, 127, 127, 0.12);
+	--rl-radius: 8px;
+	--rl-thumb-width: 168px;
+
+	display: flex;
+	align-items: stretch;
+	min-height: 96px;
+	overflow: hidden;
+	box-sizing: border-box;
+	border: 1px solid var(--rl-border);
+	border-left: 4px solid var(--rl-accent);
+	border-radius: var(--rl-radius);
+	background: var(--rl-bg);
+	color: inherit !important;
+	text-decoration: none !important;
+	transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.richlink:hover,
+.richlink:focus-visible {
+	background: var(--rl-bg-hover);
+	border-color: rgba(127, 127, 127, 0.45);
+}
+
+.richlink:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+.richlink_internal {
+	--rl-accent: #4f8f63;
+}
+
+.richlink_thumb {
+	position: relative;
+	flex: 0 0 var(--rl-thumb-width);
+	background: var(--rl-thumb-bg);
+	overflow: hidden;
+}
+
+.richlink_thumb img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	max-width: none;
+	object-fit: cover;
+	display: block;
+	border: 0;
+}
+
+.richlink_body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 4px;
+	flex: 1 1 auto;
+	min-width: 0;
+	padding: 10px 14px;
+}
+
+.richlink_site,
+.richlink_title,
+.richlink_desc,
+.richlink_meta {
+	display: block;
+	overflow: hidden;
+}
+
+.richlink_site {
+	font-size: 0.78em;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	opacity: 0.7;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.richlink_domain {
+	text-transform: none;
+	letter-spacing: 0;
+	opacity: 0.85;
+}
+
+.richlink_domain::before {
+	content: "\00b7\00a0";
+}
+
+.richlink_title {
+	font-size: 1.05em;
+	font-weight: 600;
+	line-height: 1.3;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	word-break: break-word;
+}
+
+.richlink_desc {
+	font-size: 0.9em;
+	line-height: 1.45;
+	opacity: 0.85;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	word-break: break-word;
+}
+
+.richlink_meta {
+	font-size: 0.8em;
+	opacity: 0.7;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/* Mobile: image above the text */
+@media (max-width: 600px) {
+	.richlinks {
+		max-width: 100%;
+	}
+
+	.richlink {
+		flex-direction: column;
+		border-left-width: 1px;
+		border-top: 4px solid var(--rl-accent);
+	}
+
+	.richlink_thumb {
+		flex: 0 0 auto;
+		width: 100%;
+		aspect-ratio: 1.91 / 1;
+	}
+
+	.richlink_desc {
+		-webkit-line-clamp: 2;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.richlink {
+		transition: none;
+	}
+}
+
+/* Right-to-left languages */
+[dir="rtl"] .richlink {
+	border-left-width: 1px;
+	border-right: 4px solid var(--rl-accent);
+}
+
+@media (max-width: 600px) {
+	[dir="rtl"] .richlink {
+		border-right-width: 1px;
+	}
+}
+
+@media print {
+	.richlink_thumb {
+		display: none;
+	}
+}
