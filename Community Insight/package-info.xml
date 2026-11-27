@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>BoredSkull:CommunityInsights</id>
+	<name>Community Insights</name>
+	<version>1.1.1</version>
+	<type>modification</type>
+	<upgrade from="1.0.*, 1.1.0" for="2.1.*">
+		<readme type="file" parsebbc="false">readme.txt</readme>
+		<license type="file" parsebbc="false">license.txt</license>
+		<database>install.php</database>
+		<require-file name="Sources/CommunityInsights.php" destination="$sourcedir" />
+		<require-file name="Sources/CommunityInsights-Hooks.php" destination="$sourcedir" />
+		<require-file name="Sources/CommunityInsights-Providers.php" destination="$sourcedir" />
+		<require-file name="Sources/CommunityInsights-Advanced.php" destination="$sourcedir" />
+		<require-file name="Sources/CI-Tasks.php" destination="$sourcedir" />
+		<require-file name="Themes/default/CommunityInsights.template.php" destination="$themedir" />
+		<require-file name="Themes/default/languages/CommunityInsights.english.php" destination="$languagedir" />
+		<require-file name="Themes/default/css/communityinsights.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/communityinsights.js" destination="$themedir/scripts" />
+		<!-- Clear registrations from earlier versions to prevent duplicates on upgrade. -->
+		<hook hook="integrate_load_theme" function="ci_load_theme" file="$sourcedir/CommunityInsights-Hooks.php" reverse="true" />
+		<hook hook="integrate_actions" function="ci_actions" file="$sourcedir/CommunityInsights-Hooks.php" reverse="true" />
+		<hook hook="integrate_admin_areas" function="ci_admin_areas" file="$sourcedir/CommunityInsights-Hooks.php" reverse="true" />
+		<hook hook="integrate_menu_buttons" function="ci_menu_buttons" file="$sourcedir/CommunityInsights-Hooks.php" reverse="true" />
+		<hook hook="integrate_load_permissions" function="ci_permissions" file="$sourcedir/CommunityInsights-Hooks.php" reverse="true" />
+		<hook hook="integrate_load_illegal_guest_permissions" function="ci_illegal_guest_permissions" file="$sourcedir/CommunityInsights-Hooks.php" reverse="true" />
+		<hook hook="integrate_credits" function="ci_credits" file="$sourcedir/CommunityInsights-Hooks.php" reverse="true" />
+		<hook hook="integrate_whos_online" function="ci_whos_online" file="$sourcedir/CommunityInsights-Hooks.php" reverse="true" />
+		<hook hook="integrate_actions" function="ci_actions" file="$sourcedir/CommunityInsights-Hooks.php" />
+		<hook hook="integrate_admin_areas" function="ci_admin_areas" file="$sourcedir/CommunityInsights-Hooks.php" />
+		<hook hook="integrate_menu_buttons" function="ci_menu_buttons" file="$sourcedir/CommunityInsights-Hooks.php" />
+		<hook hook="integrate_load_permissions" function="ci_permissions" file="$sourcedir/CommunityInsights-Hooks.php" />
+		<hook hook="integrate_load_illegal_guest_permissions" function="ci_illegal_guest_permissions" file="$sourcedir/CommunityInsights-Hooks.php" />
+		<hook hook="integrate_credits" function="ci_credits" file="$sourcedir/CommunityInsights-Hooks.php" />
+		<hook hook="integrate_whos_online" function="ci_whos_online" file="$sourcedir/CommunityInsights-Hooks.php" />
+	</upgrade>
+	<install for="2.1.*">
+		<readme type="file" parsebbc="false">readme.txt</readme>
+		<license type="file" parsebbc="false">license.txt</license>
+		<database>install.php</database>
+		<require-file name="Sources/CommunityInsights.php" destination="$sourcedir" />
+		<require-file name="Sources/CommunityInsights-Hooks.php" destination="$sourcedir" />
+		<require-file name="Sources/CommunityInsights-Providers.php" destination="$sourcedir" />
+		<require-file name="Sources/CommunityInsights-Advanced.php" destination="$sourcedir" />
+		<require-file name="Sources/CI-Tasks.php" destination="$sourcedir" />
+		<require-file name="Themes/default/CommunityInsights.template.php" destination="$themedir" />
+		<require-file name="Themes/default/languages/CommunityInsights.english.php" destination="$languagedir" />
+		<require-file name="Themes/default/css/communityinsights.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/communityinsights.js" destination="$themedir/scripts" />
+		<hook hook="integrate_actions" function="ci_actions" file="$sourcedir/CommunityInsights-Hooks.php" />
+		<hook hook="integrate_admin_areas" function="ci_admin_areas" file="$sourcedir/CommunityInsights-Hooks.php" />
+		<hook hook="integrate_menu_buttons" function="ci_menu_buttons" file="$sourcedir/CommunityInsights-Hooks.php" />
+		<hook hook="integrate_load_permissions" function="ci_permissions" file="$sourcedir/CommunityInsights-Hooks.php" />
+		<hook hook="integrate_load_illegal_guest_permissions" function="ci_illegal_guest_permissions" file="$sourcedir/CommunityInsights-Hooks.php" />
+		<hook hook="integrate_credits" function="ci_credits" file="$sourcedir/CommunityInsights-Hooks.php" />
+		<hook hook="integrate_whos_online" function="ci_whos_online" file="$sourcedir/CommunityInsights-Hooks.php" />
+	</install>
+	<uninstall for="2.1.*">
+		<code>uninstall-task.php</code>
+		<hook hook="integrate_load_theme" function="ci_load_theme" file="$sourcedir/CommunityInsights-Hooks.php" reverse="true" />
+		<hook hook="integrate_actions" function="ci_actions" file="$sourcedir/CommunityInsights-Hooks.php" reverse="true" />
+		<hook hook="integrate_admin_areas" function="ci_admin_areas" file="$sourcedir/CommunityInsights-Hooks.php" reverse="true" />
+		<hook hook="integrate_menu_buttons" function="ci_menu_buttons" file="$sourcedir/CommunityInsights-Hooks.php" reverse="true" />
+		<hook hook="integrate_load_permissions" function="ci_permissions" file="$sourcedir/CommunityInsights-Hooks.php" reverse="true" />
+		<hook hook="integrate_load_illegal_guest_permissions" function="ci_illegal_guest_permissions" file="$sourcedir/CommunityInsights-Hooks.php" reverse="true" />
+		<hook hook="integrate_credits" function="ci_credits" file="$sourcedir/CommunityInsights-Hooks.php" reverse="true" />
+		<hook hook="integrate_whos_online" function="ci_whos_online" file="$sourcedir/CommunityInsights-Hooks.php" reverse="true" />
+		<database>uninstall.php</database>
+		<remove-file name="$sourcedir/CommunityInsights.php" />
+		<remove-file name="$sourcedir/CommunityInsights-Hooks.php" />
+		<remove-file name="$sourcedir/CommunityInsights-Providers.php" />
+		<remove-file name="$sourcedir/CommunityInsights-Advanced.php" />
+		<remove-file name="$sourcedir/CI-Tasks.php" />
+		<remove-file name="$themedir/CommunityInsights.template.php" />
+		<remove-file name="$languagedir/CommunityInsights.english.php" />
+		<remove-file name="$themedir/css/communityinsights.css" />
+		<remove-file name="$themedir/scripts/communityinsights.js" />
+	</uninstall>
+</package-info>
