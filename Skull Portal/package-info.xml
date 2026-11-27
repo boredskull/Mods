@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info.dtd">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" version="2.1">
+ <id>boredskull:skullportal</id>
+ <name>Skull Portal</name>
+ <version>1.0.0</version>
+ <type>modification</type>
+ <license>https://opensource.org/license/isc-license-txt</license>
+ <install for="2.1 - 2.1.99">
+  <require-file name="Sources/SkullPortal.php" destination="$sourcedir" />
+  <require-file name="Sources/SkullPortalAdmin.php" destination="$sourcedir" />
+  <require-file name="Themes/default/SkullPortal.template.php" destination="$boarddir/Themes/default" />
+  <require-file name="Themes/default/languages/SkullPortal.english.php" destination="$boarddir/Themes/default/languages" />
+  <require-file name="Themes/default/css/skullportal.css" destination="$boarddir/Themes/default/css" />
+  <code>install.php</code>
+  <hook hook="integrate_pre_load" function="skullportal_pre_load" file="$sourcedir/SkullPortal.php" />
+  <hook hook="integrate_actions" function="skullportal_actions" file="$sourcedir/SkullPortal.php" />
+  <hook hook="integrate_menu_buttons" function="skullportal_menu" file="$sourcedir/SkullPortal.php" />
+  <hook hook="integrate_current_action" function="skullportal_current_action" file="$sourcedir/SkullPortal.php" />
+  <hook hook="integrate_theme_context" function="skullportal_forum_context" file="$sourcedir/SkullPortal.php" />
+  <hook hook="integrate_theme_context" function="skullportal_forum_linktree" file="$sourcedir/SkullPortal.php" />
+  <hook hook="integrate_admin_areas" function="skullportal_admin_areas" file="$sourcedir/SkullPortal.php" />
+  <!-- SMF Package Manager displays its completion page before following this link. -->
+  <redirect url="?action=admin;area=skullportal" timeout="3000" />
+ </install>
+ <uninstall for="2.1 - 2.1.99">
+  <code>uninstall.php</code>
+  <hook hook="integrate_theme_context" function="skullportal_forum_context" file="$sourcedir/SkullPortal.php" reverse="true" />
+  <hook hook="integrate_theme_context" function="skullportal_forum_linktree" file="$sourcedir/SkullPortal.php" reverse="true" />
+  <hook hook="integrate_admin_areas" function="skullportal_admin_areas" file="$sourcedir/SkullPortal.php" reverse="true" />
+  <hook hook="integrate_current_action" function="skullportal_current_action" file="$sourcedir/SkullPortal.php" reverse="true" />
+  <hook hook="integrate_menu_buttons" function="skullportal_menu" file="$sourcedir/SkullPortal.php" reverse="true" />
+  <hook hook="integrate_actions" function="skullportal_actions" file="$sourcedir/SkullPortal.php" reverse="true" />
+  <hook hook="integrate_pre_load" function="skullportal_pre_load" file="$sourcedir/SkullPortal.php" reverse="true" />
+  <remove-file name="$sourcedir/SkullPortalAdmin.php" />
+  <remove-file name="$sourcedir/SkullPortal.php" />
+  <remove-file name="$boarddir/Themes/default/SkullPortal.template.php" />
+  <remove-file name="$boarddir/Themes/default/languages/SkullPortal.english.php" />
+  <remove-file name="$boarddir/Themes/default/css/skullportal.css" />
+ </uninstall>
+</package-info>
