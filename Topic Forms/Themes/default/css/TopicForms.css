@@ -1,0 +1,42 @@
+#bstf_switch, #bstf_load {
+    display: flex;
+    gap: .6rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: .4rem 0;
+}
+#bstf_editor .settings {
+    display: grid;
+    grid-template-columns: minmax(9rem, 12rem) minmax(0, 1fr);
+    gap: .75rem 1rem;
+    align-items: start;
+}
+#bstf_editor .settings > dt, #bstf_editor .settings > dd {
+    float: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+#bstf_title, #bstf_description { width: min(100%, 44rem); box-sizing: border-box; }
+#bstf_rows > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+    gap: .6rem 1rem;
+    align-items: end;
+}
+#bstf_rows > div > div, #bstf_rows .bstf-options { grid-column: 1 / -1; }
+#bstf_rows > div > div { display: flex; align-items: center; gap: .4rem; }
+#bstf_rows > div > div > strong { margin-inline-end: auto; }
+#bstf_rows label > input[type=text], #bstf_rows label > select { width: 100%; box-sizing: border-box; }
+#bstf_rows .bstf-options[hidden] { display: none; }
+#bstf_editor fieldset, #bstf_move, #bstf_fields { margin-block: 1rem; }
+#bstf_fields .bstf_field label { display: block; margin-bottom: .25rem; }
+#bstf_fields .bstf_field input:not([type=checkbox]), #bstf_fields .bstf_field select {
+    width: min(100%, 30rem);
+    box-sizing: border-box;
+}
+#bstf_fields textarea { box-sizing: border-box; }
+@media (max-width: 38rem) {
+    #bstf_editor .settings { grid-template-columns: 1fr; gap: .3rem; }
+    #bstf_editor .settings > dd { margin-bottom: .7rem; }
+}

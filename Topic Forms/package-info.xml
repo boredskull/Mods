@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info.dtd">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+<id>boredskull:topic-forms</id><name>Topic Forms</name><version>1.1.0</version><type>modification</type><author>BoredSkull</author><license>ISC</license>
+<install for="2.1 - 2.1.99">
+<license>LICENSE.txt</license>
+<require-file name="Sources/TopicForms.php" destination="$sourcedir" />
+<require-file name="Themes/default/TopicForms.template.php" destination="$themedir" />
+<require-file name="Themes/default/languages/TopicForms.english.php" destination="$languagedir" />
+<require-file name="Themes/default/scripts/TopicForms.js" destination="$themedir/scripts" />
+<require-file name="Themes/default/css/TopicForms.css" destination="$themedir/css" />
+<database>install.php</database>
+<hook hook="integrate_modify_modifications" function="BSTF_admin" file="$sourcedir/TopicForms.php" />
+<hook hook="integrate_post_end" function="BSTF_post_end" file="$sourcedir/TopicForms.php" />
+<hook hook="integrate_post2_start" function="BSTF_post2_start" file="$sourcedir/TopicForms.php" />
+<hook hook="integrate_post2_pre" function="BSTF_post2_pre" file="$sourcedir/TopicForms.php" />
+<hook hook="integrate_post_errors" function="BSTF_errors" file="$sourcedir/TopicForms.php" />
+<hook hook="integrate_admin_areas" function="BSTF_admin_areas" file="$sourcedir/TopicForms.php" />
+<hook hook="integrate_credits" function="BSTF_credits" file="$sourcedir/TopicForms.php" />
+<redirect url="?action=admin;area=modsettings;sa=bstf" timeout="1500" />
+</install>
+<upgrade from="1.0.1 - 1.0.2" for="2.1 - 2.1.99">
+<require-file name="Sources/TopicForms.php" destination="$sourcedir" />
+<require-file name="Themes/default/TopicForms.template.php" destination="$themedir" />
+<require-file name="Themes/default/languages/TopicForms.english.php" destination="$languagedir" />
+<require-file name="Themes/default/scripts/TopicForms.js" destination="$themedir/scripts" />
+<require-file name="Themes/default/css/TopicForms.css" destination="$themedir/css" />
+<database>install.php</database>
+<hook hook="integrate_admin_areas" function="BSTF_admin_areas" file="$sourcedir/TopicForms.php" />
+<hook hook="integrate_credits" function="BSTF_credits" file="$sourcedir/TopicForms.php" />
+<redirect url="?action=admin;area=modsettings;sa=bstf" timeout="1500" />
+</upgrade>
+<uninstall for="2.1 - 2.1.99">
+<hook hook="integrate_modify_modifications" function="BSTF_admin" file="$sourcedir/TopicForms.php" reverse="true" />
+<hook hook="integrate_post_end" function="BSTF_post_end" file="$sourcedir/TopicForms.php" reverse="true" />
+<hook hook="integrate_post2_start" function="BSTF_post2_start" file="$sourcedir/TopicForms.php" reverse="true" />
+<hook hook="integrate_post2_pre" function="BSTF_post2_pre" file="$sourcedir/TopicForms.php" reverse="true" />
+<hook hook="integrate_post_errors" function="BSTF_errors" file="$sourcedir/TopicForms.php" reverse="true" />
+<remove-file name="$themedir/css/TopicForms.css" />
+<remove-file name="$themedir/scripts/TopicForms.js" />
+<remove-file name="$sourcedir/TopicForms.php" />
+<remove-file name="$themedir/TopicForms.template.php" />
+<remove-file name="$languagedir/TopicForms.english.php" />
+<hook hook="integrate_admin_areas" function="BSTF_admin_areas" file="$sourcedir/TopicForms.php" reverse="true" />
+<hook hook="integrate_credits" function="BSTF_credits" file="$sourcedir/TopicForms.php" reverse="true" />
+</uninstall>
+</package-info>
