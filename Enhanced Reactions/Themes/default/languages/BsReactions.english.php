@@ -1,0 +1,22 @@
+<?php
+if (!defined('SMF')) die('No direct access');
+$txt['bsr_settings']='Enhanced Reactions';
+$txt['bsr_settings_desc']='Configure standalone post reactions independently of SMF Likes.';
+$txt['bsr_enabled']='Enable Enhanced Reactions';
+$txt['bsr_enabled_help']='Enable the reaction picker independently of SMF Likes.';
+$txt['bsr_enabled_types']='Enabled reaction IDs';
+$txt['bsr_enabled_types_help']='Comma-separated list, for example: like,love,laugh,wow,sad,angry,helpful,thanks';
+$txt['bsr_disabled_boards']='Disabled board IDs';
+$txt['bsr_disabled_boards_help']='Comma-separated numeric board IDs. Blank enables all boards.';
+$txt['bsr_rate_limit']='Minimum seconds between reactions on different posts';
+$txt['bsr_rate_limit_help']='Rapid changes on the same post remain permitted.';
+$txt['bsr_react']='React';
+$txt['bsr_none']='0 reactions';
+$txt['bsr_credits']='Enhanced Reactions %s <a href="https://boredskull.net">BoredSkull</a> &copy; 2026';
+$txt['bsr_choose']='Choose a reaction';
+$txt['bsr_remove']='Remove reaction';
+$txt['bsr_view']='See reactions';
+$txt['bsr_members']='Members who reacted';
+$txt['bsr_close']='Close';
+$txt['permissionname_bsr_react']='React to posts';
+$txt['permissionhelp_bsr_react']='Allows members to react to other members\' posts.';

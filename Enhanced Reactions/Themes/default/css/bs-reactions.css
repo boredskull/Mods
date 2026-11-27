@@ -1,0 +1,13 @@
+/* Enhanced Reactions 1.0.8: styles apply to each post independent of native Likes. */
+.bsr-reactions{display:inline-flex;align-items:center;flex-wrap:wrap;gap:.45rem;position:relative}
+.bsr-picker{display:inline-flex;flex-wrap:wrap;gap:.25rem}
+.bsr-picker[hidden]{display:none!important}
+.bsr-picker button,.bsr-open,.bsr-view{cursor:pointer;border:1px solid var(--border,#aaa);background:var(--windowbg,#fff);border-radius:1rem;padding:.25rem .55rem;color:inherit}
+.bsr-picker button[aria-pressed=true]{outline:2px solid currentColor;outline-offset:1px}
+.bsr-picker button:focus-visible,.bsr-open:focus-visible,.bsr-view:focus-visible{outline:3px solid #477dc6;outline-offset:2px}
+.bsr-summary{font-size:.9em}.bsr-status{font-size:.85em}
+.bsr-dialog{max-width:32rem;max-height:70vh;overflow:auto;padding:1.2rem;border:1px solid #888;border-radius:.6rem;background:var(--windowbg,#fff);color:inherit}
+.bsr-dialog::backdrop{background:rgba(0,0,0,.45)}
+.bsr-dialog[open]{position:fixed!important;inset:auto!important;top:50%!important;left:50%!important;right:auto!important;bottom:auto!important;transform:translate(-50%,-50%)!important;margin:0!important;box-sizing:border-box;width:min(32rem,calc(100vw - 2rem));z-index:10000}
+.under_message .bsr-list-item{list-style:none;margin-right:.3rem}
+.under_message .bsr-reaction-row{margin:0;padding:0}
