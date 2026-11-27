@@ -1,5 +1,8 @@
 <?php
-// Social Media Links - English
+/**
+ * Social Media Links - English
+ * @license ISC
+ */
 
 $txt['social_links_title'] = 'Social media';
 $txt['social_links_profile_area'] = 'Social Media Links';
@@ -18,6 +21,14 @@ $txt['permissionhelp_social_links_view'] = 'Whether this group sees the social m
 
 // Admin settings
 $txt['social_links_settings_title'] = 'Social Media Links';
+$txt['social_links_settings_desc'] = 'Configure social media links and their appearance below signatures.';
+$txt['social_links_separator'] = 'Separator above social media icons';
+$txt['social_links_separator_desc'] = 'Choose a separator or none. Older installations retain the dashed line unless changed.';
+$txt['social_links_separator_none'] = 'None';
+$txt['social_links_separator_dotted'] = 'Dotted';
+$txt['social_links_separator_solid'] = 'Solid';
+$txt['social_links_separator_dashed'] = 'Dashed';
+$txt['social_links_separator_double'] = 'Double';
 $txt['social_links_enabled'] = 'Enable social media links';
 $txt['social_links_fa_url'] = 'Font Awesome Free stylesheet URL';
 $txt['social_links_fa_url_desc'] = 'Open source icon set (Font Awesome Free: icons CC BY 4.0, code MIT). Use the CDN default, a self-hosted copy, or leave blank if your theme already loads Font Awesome 6.5 or newer.';

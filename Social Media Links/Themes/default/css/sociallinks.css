@@ -9,8 +9,13 @@
 	gap: 6px;
 	margin: 6px 0 2px;
 	padding-top: 6px;
-	border-top: 1px dashed rgba(0, 0, 0, 0.12);
+	border-top: 1px dashed rgba(127, 127, 127, 0.35);
 }
+.sociallinks_separator_none { border-top: 0; padding-top: 0; }
+.sociallinks_separator_dotted { border-top-style: dotted; }
+.sociallinks_separator_solid { border-top-style: solid; }
+.sociallinks_separator_dashed { border-top-style: dashed; }
+.sociallinks_separator_double { border-top-style: double; border-top-width: 3px; }
 .sociallinks_icon {
 	display: inline-flex;
 	align-items: center;
@@ -71,4 +76,38 @@
 .sociallinks_form input[type="text"] {
 	width: 100%;
 	max-width: 380px;
+}
+
+/* Accessible profile editing: platform and input are one visual unit. */
+.sociallinks_form { max-width: 720px; }
+.sociallinks_formrow {
+	display: grid;
+	grid-template-columns: minmax(125px, 175px) minmax(0, 1fr);
+	align-items: center;
+	gap: 8px 12px;
+	padding: 9px 12px;
+	border-bottom: 1px solid rgba(127, 127, 127, .25);
+	border-radius: 3px;
+	transition: background-color .12s ease, box-shadow .12s ease;
+}
+.sociallinks_formrow:nth-child(even) { background-color: rgba(127, 127, 127, .055); }
+.sociallinks_formrow:hover,
+.sociallinks_formrow:focus-within {
+	background-color: rgba(65, 130, 190, .14);
+	box-shadow: inset 3px 0 0 currentColor;
+}
+.sociallinks_formlabel { display: inline-flex; align-items: center; gap: 8px; min-width: 0; cursor: pointer; }
+.sociallinks_formlabel strong { overflow-wrap: anywhere; }
+.sociallinks_formicon { display: inline-flex; width: 22px; flex: 0 0 22px; justify-content: center; font-size: 18px; color: var(--sl-brand, currentColor); }
+.sociallinks_formfield { min-width: 0; }
+.sociallinks_formfield input[type="text"] { width: 100%; max-width: 430px; box-sizing: border-box; margin: 0; }
+.sociallinks_formfield input[type="text"]:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.sociallinks_formrow_error { box-shadow: inset 3px 0 0 #b52929; }
+.sociallinks_field_error { display: block; margin-top: 4px; font-size: .9em; }
+@media (max-width: 560px) {
+	.sociallinks_formrow { grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 10px; }
+	.sociallinks_formfield input[type="text"] { max-width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.sociallinks_formrow { transition: none; }
 }

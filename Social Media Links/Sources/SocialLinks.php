@@ -14,8 +14,8 @@
  *
  * Fully hook based - no core files are edited.
  *
- * @license MIT
- * @version 1.0.0
+ * @license ISC
+ * @version 1.1.1
  */
 
 if (!defined('SMF'))
@@ -368,7 +368,7 @@ function sociallink_credits()
 
 	loadLanguage('SocialLinks');
 
-	$context['credits_modifications'][] = sprintf($txt['SocialLinks_credits'], '1.0.1');
+	$context['credits_modifications'][] = sprintf($txt['SocialLinks_credits'], '1.1.1');
 }
 /**
  * Decodes a member's stored links.
@@ -412,7 +412,10 @@ function sociallinks_render(array $links)
 	if (empty($items))
 		return '';
 
-	return '<div class="sociallinks' . (!empty($modSettings['social_links_brand_colours']) ? ' sociallinks_brand' : '') . (!empty($modSettings['social_links_show_labels']) ? ' sociallinks_labels' : '') . '" aria-label="' . (isset($txt['social_links_title']) ? $txt['social_links_title'] : 'Social media') . '">'
+	$separator = isset($modSettings['social_links_separator']) ? $modSettings['social_links_separator'] : 'dashed';
+	if (!in_array($separator, array('none', 'dotted', 'solid', 'dashed', 'double'), true))
+		$separator = 'dashed';
+	return '<div class="sociallinks sociallinks_separator_' . $separator . (!empty($modSettings['social_links_brand_colours']) ? ' sociallinks_brand' : '') . (!empty($modSettings['social_links_show_labels']) ? ' sociallinks_labels' : '') . '" aria-label="' . (isset($txt['social_links_title']) ? $txt['social_links_title'] : 'Social media') . '">'
 		. implode('', $items) . '</div>';
 }
 
@@ -603,29 +606,67 @@ function sociallinks_profile_areas(&$profile_areas)
 	);
 }
 
-/**
- * integrate_general_mod_settings
- */
-function sociallinks_mod_settings(&$config_vars)
+/** Admin sidebar subsection. */
+function sociallinks_admin_areas(&$admin_areas)
 {
 	global $txt;
-
 	loadLanguage('SocialLinks');
+	if (isset($admin_areas['config']['areas']['modsettings']))
+		$admin_areas['config']['areas']['modsettings']['subsections']['sociallinks'] = array($txt['social_links_settings_title']);
+}
 
-	$config_vars[] = array('title', 'social_links_settings_title');
-	$config_vars[] = array('check', 'social_links_enabled');
-	$config_vars[] = array('text', 'social_links_fa_url', 'size' => 60, 'subtext' => $txt['social_links_fa_url_desc']);
-	$config_vars[] = array('check', 'social_links_new_tab');
-	$config_vars[] = array('check', 'social_links_brand_colours');
-	$config_vars[] = array('check', 'social_links_show_labels');
-	$config_vars[] = array('desc', 'social_links_perm_note');
+/** Dedicated Modification Settings tab. */
+function sociallinks_modify_modifications(&$subActions)
+{
+	global $context, $txt;
+	loadLanguage('SocialLinks');
+	$subActions['sociallinks'] = 'sociallinks_admin_settings';
+	$context[$context['admin_menu_name']]['tab_data']['tabs']['sociallinks'] = array('description' => $txt['social_links_settings_desc']);
+}
 
+function sociallinks_settings_config()
+{
+	global $txt;
+	loadLanguage('SocialLinks');
+	$config_vars = array(
+		array('check', 'social_links_enabled'),
+		array('text', 'social_links_fa_url', 'size' => 60, 'subtext' => $txt['social_links_fa_url_desc']),
+		array('check', 'social_links_new_tab'),
+		array('check', 'social_links_brand_colours'),
+		array('check', 'social_links_show_labels'),
+		array('select', 'social_links_separator', array(
+			'none' => $txt['social_links_separator_none'],
+			'dotted' => $txt['social_links_separator_dotted'],
+			'solid' => $txt['social_links_separator_solid'],
+			'dashed' => $txt['social_links_separator_dashed'],
+			'double' => $txt['social_links_separator_double'],
+		), 'subtext' => $txt['social_links_separator_desc']),
+		array('desc', 'social_links_perm_note'),
+	);
 	foreach (sociallinks_networks() as $key => $net)
 	{
 		$txt['social_links_off_' . $key] = sprintf($txt['social_links_hide_network'], $net['label']);
 		$config_vars[] = array('check', 'social_links_off_' . $key);
 	}
-	$config_vars[] = '';
+	return $config_vars;
+}
+
+function sociallinks_admin_settings($return_config = false)
+{
+	global $context, $txt, $scripturl;
+	$config_vars = sociallinks_settings_config();
+	if ($return_config)
+		return $config_vars;
+	$context['post_url'] = $scripturl . '?action=admin;area=modsettings;sa=sociallinks;save';
+	$context['settings_title'] = $txt['social_links_settings_title'];
+	if (isset($_GET['save']))
+	{
+		checkSession();
+		saveDBSettings($config_vars);
+		$_SESSION['adm-save'] = true;
+		redirectexit('action=admin;area=modsettings;sa=sociallinks');
+	}
+	prepareDBSettingContext($config_vars);
 }
 
 /* ---------------------------------------------------------------------

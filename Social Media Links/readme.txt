@@ -1,5 +1,5 @@
 [center]
-[size=5][color=#2980b9][b]Social Media Links - 1.0.1[/b][/color][/size]
+[size=5][color=#2980b9][b]Social Media Links - 1.1.1[/b][/color][/size]
 
 [size=3][i][color=#666666]Connect your community, one profile at a time.[/color][/i][/size]
 
@@ -205,6 +205,7 @@ From here, administrators can:
 [li]Enable or disable individual social networks[/li]
 [li]Configure the Font Awesome stylesheet source[/li]
 [li]Choose between CDN, self-hosted or existing theme icon support[/li]
+[li]Choose no separator, dotted, solid, dashed or double line above icons[/li]
 [/list]
 
 Permissions are managed separately through SMF's standard permission system.
@@ -308,7 +309,7 @@ Whether your members are content creators, gamers, developers, musicians or simp
 
 [color=#27ae60][b]20 Supported Platforms + Personal Websites | Flexible Permissions | Easy Profile Management[/b][/color]
 
-[size=3][b]Social Media Links - 1.0.1[/b][/size]
+[size=3][b]Social Media Links - 1.1.1[/b][/size]
 
 [i]Connect your community, one profile at a time.[/i]
 
@@ -316,3 +317,22 @@ Whether your members are content creators, gamers, developers, musicians or simp
 
 [color=#777777][size=2]Released under the ISC Licence[/size][/color]
 [/center]
+[hr]
+[b]Changes in v1.1.1[/b]
+[list]
+[li]Standardised ISC licence headers across all PHP files.[/li]
+[li]Completed the Finnish settings translation and included it in installation, upgrade and removal.[/li]
+[/list]
+
+[b]Changes in v1.1.0[/b]
+[list]
+[li]Platform labels and their corresponding fields now form compact, clearly associated rows.[/li]
+[li]Subtle alternating row backgrounds and dividers make the list easier to follow.[/li]
+[li]The entire row highlights on mouse hover and keyboard focus.[/li]
+[li]Mobile layout stacks platform labels directly above their fields.[/li]
+[li]Validation errors are linked to their inputs for assistive technology.[/li]
+[li]Dedicated Social Media Links subsection under Configuration > Modification Settings instead of Miscellaneous.[/li]
+[li]Choose None, Dotted, Solid, Dashed or Double as the separator above icons.[/li]
+[li]New installs default to None; existing installs retain the old dashed line until changed.[/li]
+[li]Existing links and permissions are preserved.[/li]
+[/list]

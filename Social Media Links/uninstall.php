@@ -1,6 +1,7 @@
 <?php
 /**
  * Social Media Links - remove data (only runs if "Remove all data" is ticked).
+ * @license ISC
  */
 
 if (file_exists(dirname(__FILE__) . '/SSI.php') && !defined('SMF'))

@@ -1,5 +1,8 @@
 <?php
-// Social Media Links - Finnish
+/**
+ * Social Media Links - Finnish
+ * @license ISC
+ */
 
 $txt['social_links_title'] = 'Sosiaalinen media';
 $txt['social_links_profile_area'] = 'Sosiaalisen median linkit';
@@ -18,6 +21,14 @@ $txt['permissionhelp_social_links_view'] = 'Määrittää, näkeekö tämä ryhm
 
 // Ylläpidon asetukset
 $txt['social_links_settings_title'] = 'Sosiaalisen median linkit';
+$txt['social_links_settings_desc'] = 'Määritä sosiaalisen median linkkien asetukset ja niiden ulkoasu allekirjoitusten alla.';
+$txt['social_links_separator'] = 'Erotin sosiaalisen median kuvakkeiden yläpuolella';
+$txt['social_links_separator_desc'] = 'Valitse erottimen tyyli tai jätä erotin pois. Vanhoissa asennuksissa katkoviiva säilyy, kunnes asetusta muutetaan.';
+$txt['social_links_separator_none'] = 'Ei erotinta';
+$txt['social_links_separator_dotted'] = 'Pisteviiva';
+$txt['social_links_separator_solid'] = 'Yhtenäinen viiva';
+$txt['social_links_separator_dashed'] = 'Katkoviiva';
+$txt['social_links_separator_double'] = 'Kaksoisviiva';
 $txt['social_links_enabled'] = 'Ota sosiaalisen median linkit käyttöön';
 $txt['social_links_fa_url'] = 'Font Awesome Free -tyylitiedoston URL-osoite';
 $txt['social_links_fa_url_desc'] = 'Avoimen lähdekoodin kuvakekokoelma (Font Awesome Free: kuvakkeet CC BY 4.0, koodi MIT). Käytä oletusarvoista CDN-osoitetta tai itse ylläpidettyä kopiota. Jätä kenttä tyhjäksi, jos teemasi käyttää jo Font Awesome -versiota 6.5 tai uudempaa.';

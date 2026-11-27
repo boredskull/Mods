@@ -1,6 +1,7 @@
 <?php
 /**
  * Social Media Links - install script.
+ * @license ISC
  */
 
 if (file_exists(dirname(__FILE__) . '/SSI.php') && !defined('SMF'))
@@ -50,6 +51,7 @@ $defaults = array(
 	'social_links_new_tab' => 1,
 	'social_links_brand_colours' => 0,
 	'social_links_show_labels' => 0,
+	'social_links_separator' => 'none',
 );
 
 $set = array();
