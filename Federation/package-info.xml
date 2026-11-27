@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+ <id>BoredSkull:Federation</id>
+ <name>Federation</name>
+ <version>1.0.2</version>
+ <type>modification</type>
+ <install for="2.1.*">
+  <readme type="file" parsebbc="false">readme.txt</readme>
+  <license type="file" parsebbc="false">license.txt</license>
+  <database>install.php</database>
+  <require-file name="Sources/Federation.php" destination="$sourcedir" />
+  <require-file name="Sources/Federation-Lib.php" destination="$sourcedir" />
+  <require-file name="Sources/Federation-Protocol.php" destination="$sourcedir" />
+  <require-file name="Sources/Federation-Net.php" destination="$sourcedir" />
+  <require-file name="Sources/Federation-Admin.php" destination="$sourcedir" />
+  <require-file name="Themes/default/Federation.template.php" destination="$themedir" />
+  <require-file name="Themes/default/languages/Federation.english.php" destination="$languagedir" />
+  <require-file name="Themes/default/css/federation.css" destination="$themedir/css" />
+  <require-file name="federation-worker.php" destination="$boarddir" />
+  <hook hook="integrate_actions" function="federation_actions" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_admin_areas" function="federation_admin_areas" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_profile_areas" function="federation_profile_areas" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_load_theme" function="federation_load_theme" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_create_topic" function="federation_create_topic" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_modify_post" function="federation_modify_post" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_remove_message" function="federation_remove_message" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_modify_modifications" function="federation_modsettings" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_credits" function="federation_credits" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_remove_topics_before" function="federation_remove_topics" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_after_approve_posts" function="federation_after_approve" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_movetopic2_end" function="federation_move_end" file="$sourcedir/Federation.php" />
+  <redirect url="?action=admin;area=modsettings;sa=federation" timeout="3000" />
+ </install>
+ <upgrade from="1.0.1 - 1.0.2" for="2.1.*">
+  <readme type="file" parsebbc="false">readme.txt</readme>
+  <database>install.php</database>
+  <require-file name="Sources/Federation.php" destination="$sourcedir" />
+  <require-file name="Sources/Federation-Lib.php" destination="$sourcedir" />
+  <require-file name="Sources/Federation-Protocol.php" destination="$sourcedir" />
+  <require-file name="Sources/Federation-Net.php" destination="$sourcedir" />
+  <require-file name="Sources/Federation-Admin.php" destination="$sourcedir" />
+  <require-file name="Themes/default/Federation.template.php" destination="$themedir" />
+  <require-file name="Themes/default/languages/Federation.english.php" destination="$languagedir" />
+  <require-file name="Themes/default/css/federation.css" destination="$themedir/css" />
+  <require-file name="federation-worker.php" destination="$boarddir" />
+  <hook hook="integrate_actions" function="federation_actions" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_admin_areas" function="federation_admin_areas" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_profile_areas" function="federation_profile_areas" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_load_theme" function="federation_load_theme" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_create_topic" function="federation_create_topic" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_modify_post" function="federation_modify_post" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_remove_message" function="federation_remove_message" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_modify_modifications" function="federation_modsettings" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_credits" function="federation_credits" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_remove_topics_before" function="federation_remove_topics" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_after_approve_posts" function="federation_after_approve" file="$sourcedir/Federation.php" />
+  <hook hook="integrate_movetopic2_end" function="federation_move_end" file="$sourcedir/Federation.php" />
+  <redirect url="?action=admin;area=modsettings;sa=federation" timeout="3000" />
+ </upgrade>
+ <uninstall for="2.1.*">
+  <hook hook="integrate_actions" function="federation_actions" file="$sourcedir/Federation.php" reverse="true" />
+  <hook hook="integrate_admin_areas" function="federation_admin_areas" file="$sourcedir/Federation.php" reverse="true" />
+  <hook hook="integrate_profile_areas" function="federation_profile_areas" file="$sourcedir/Federation.php" reverse="true" />
+  <hook hook="integrate_load_theme" function="federation_load_theme" file="$sourcedir/Federation.php" reverse="true" />
+  <hook hook="integrate_create_topic" function="federation_create_topic" file="$sourcedir/Federation.php" reverse="true" />
+  <hook hook="integrate_modify_post" function="federation_modify_post" file="$sourcedir/Federation.php" reverse="true" />
+  <hook hook="integrate_remove_message" function="federation_remove_message" file="$sourcedir/Federation.php" reverse="true" />
+  <hook hook="integrate_modify_modifications" function="federation_modsettings" file="$sourcedir/Federation.php" reverse="true" />
+  <hook hook="integrate_credits" function="federation_credits" file="$sourcedir/Federation.php" reverse="true" />
+  <hook hook="integrate_remove_topics_before" function="federation_remove_topics" file="$sourcedir/Federation.php" reverse="true" />
+  <hook hook="integrate_after_approve_posts" function="federation_after_approve" file="$sourcedir/Federation.php" reverse="true" />
+  <hook hook="integrate_movetopic2_end" function="federation_move_end" file="$sourcedir/Federation.php" reverse="true" />
+  <remove-file name="$sourcedir/Federation.php" />
+  <remove-file name="$sourcedir/Federation-Lib.php" />
+  <remove-file name="$sourcedir/Federation-Protocol.php" />
+  <remove-file name="$sourcedir/Federation-Net.php" />
+  <remove-file name="$sourcedir/Federation-Admin.php" />
+  <remove-file name="$themedir/Federation.template.php" />
+  <remove-file name="$languagedir/Federation.english.php" />
+  <remove-file name="$themedir/css/federation.css" />
+  <remove-file name="$boarddir/federation-worker.php" />
+  <database>uninstalldb.php</database>
+ </uninstall>
+</package-info>
