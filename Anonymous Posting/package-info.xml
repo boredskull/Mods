@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info.dtd">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+<id>boredskull:anonymous-posting</id><name>Anonymous Posting</name><version>1.0.9</version><type>modification</type><author>BoredSkull</author>
+<install for="2.1 - 2.1.99">
+<readme type="inline" parsebbc="true">[b]Anonymous Posting[/b] by BoredSkull. After install, configure boards in Admin &gt; Configuration &gt; Modification Settings &gt; Anonymous Posting and grant the [i]Post anonymously[/i] and [i]Reveal anonymous post authors[/i] permissions to trusted groups. Requires MySQL/MariaDB with InnoDB tables.</readme>
+<license type="file">LICENSE.txt</license>
+<require-file name="Sources/BoredSkullAnonymousPosting.php" destination="$sourcedir" />
+<require-file name="Themes/default/BoredSkullAnonymousPosting.template.php" destination="$themedir" />
+<require-file name="Themes/default/languages/BoredSkullAnonymousPosting.english.php" destination="$languagedir" />
+<code>install.php</code>
+<hook hook="integrate_post_end" function="BSAP_post_end" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_display_topic" function="BSAP_display_topic" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_post2_end" function="BSAP_post2_end" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_post2_pre" function="BSAP_pre" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_create_post" function="BSAP_create" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_after_create_post" function="BSAP_after_create" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_load_permissions" function="BSAP_permissions" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_admin_areas" function="BSAP_admin_areas" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_modify_modifications" function="BSAP_admin_tab" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_actions" function="BSAP_actions" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_prepare_display_context" function="BSAP_display" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_load_illegal_guest_permissions" function="BSAP_illegal_guest_permissions" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_display_message_list" function="BSAP_batch" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_remove_message" function="BSAP_remove_message" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_remove_topics" function="BSAP_remove_topics" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_daily_maintenance" function="BSAP_prune" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_credits" function="BSAP_credits" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<redirect url="?action=admin;area=modsettings;sa=bsap" />
+</install>
+<upgrade from="1.0.8" for="2.1 - 2.1.99">
+<require-file name="Sources/BoredSkullAnonymousPosting.php" destination="$sourcedir" />
+<require-file name="Themes/default/BoredSkullAnonymousPosting.template.php" destination="$themedir" />
+<require-file name="Themes/default/languages/BoredSkullAnonymousPosting.english.php" destination="$languagedir" />
+<code>install.php</code>
+<hook hook="integrate_load_illegal_guest_permissions" function="BSAP_illegal_guest_permissions" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_display_message_list" function="BSAP_batch" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_remove_message" function="BSAP_remove_message" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_remove_topics" function="BSAP_remove_topics" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_daily_maintenance" function="BSAP_prune" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+<hook hook="integrate_credits" function="BSAP_credits" file="$sourcedir/BoredSkullAnonymousPosting.php" />
+</upgrade>
+<uninstall for="2.1 - 2.1.99">
+<hook hook="integrate_post_end" function="BSAP_post_end" file="$sourcedir/BoredSkullAnonymousPosting.php" reverse="true" />
+<hook hook="integrate_display_topic" function="BSAP_display_topic" file="$sourcedir/BoredSkullAnonymousPosting.php" reverse="true" />
+<hook hook="integrate_post2_end" function="BSAP_post2_end" file="$sourcedir/BoredSkullAnonymousPosting.php" reverse="true" />
+<hook hook="integrate_post2_pre" function="BSAP_pre" file="$sourcedir/BoredSkullAnonymousPosting.php" reverse="true" />
+<hook hook="integrate_create_post" function="BSAP_create" file="$sourcedir/BoredSkullAnonymousPosting.php" reverse="true" />
+<hook hook="integrate_after_create_post" function="BSAP_after_create" file="$sourcedir/BoredSkullAnonymousPosting.php" reverse="true" />
+<hook hook="integrate_load_permissions" function="BSAP_permissions" file="$sourcedir/BoredSkullAnonymousPosting.php" reverse="true" />
+<hook hook="integrate_admin_areas" function="BSAP_admin_areas" file="$sourcedir/BoredSkullAnonymousPosting.php" reverse="true" />
+<hook hook="integrate_modify_modifications" function="BSAP_admin_tab" file="$sourcedir/BoredSkullAnonymousPosting.php" reverse="true" />
+<hook hook="integrate_actions" function="BSAP_actions" file="$sourcedir/BoredSkullAnonymousPosting.php" reverse="true" />
+<hook hook="integrate_prepare_display_context" function="BSAP_display" file="$sourcedir/BoredSkullAnonymousPosting.php" reverse="true" />
+<hook hook="integrate_load_illegal_guest_permissions" function="BSAP_illegal_guest_permissions" file="$sourcedir/BoredSkullAnonymousPosting.php" reverse="true" />
+<hook hook="integrate_display_message_list" function="BSAP_batch" file="$sourcedir/BoredSkullAnonymousPosting.php" reverse="true" />
+<hook hook="integrate_remove_message" function="BSAP_remove_message" file="$sourcedir/BoredSkullAnonymousPosting.php" reverse="true" />
+<hook hook="integrate_remove_topics" function="BSAP_remove_topics" file="$sourcedir/BoredSkullAnonymousPosting.php" reverse="true" />
+<hook hook="integrate_daily_maintenance" function="BSAP_prune" file="$sourcedir/BoredSkullAnonymousPosting.php" reverse="true" />
+<hook hook="integrate_credits" function="BSAP_credits" file="$sourcedir/BoredSkullAnonymousPosting.php" reverse="true" />
+<database>uninstall-db.php</database>
+<remove-file name="$sourcedir/BoredSkullAnonymousPosting.php" />
+<remove-file name="$themedir/BoredSkullAnonymousPosting.template.php" />
+<remove-file name="$languagedir/BoredSkullAnonymousPosting.english.php" />
+</uninstall>
+</package-info>
