@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info.dtd">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+ <id>boredskull:slow-mode</id><name>Slow Mode</name><version>1.0.4</version><type>modification</type><author>BoredSkull</author><license>ISC</license>
+ <install for="2.1 - 2.1.99">
+  <require-file name="Sources/SlowMode.php" destination="$sourcedir" />
+  <require-file name="Themes/default/SlowMode.template.php" destination="$themedir" />
+  <require-file name="Themes/default/languages/SlowMode.english.php" destination="$languagedir" />
+  <code>install.php</code>
+  <hook hook="integrate_actions" function="BSM_actions" file="$sourcedir/SlowMode.php" />
+  <hook hook="integrate_admin_areas" function="BSM_admin_areas" file="$sourcedir/SlowMode.php" />
+  <hook hook="integrate_modify_modifications" function="BSM_admin" file="$sourcedir/SlowMode.php" />
+  <hook hook="integrate_display_buttons" function="BSM_buttons" file="$sourcedir/SlowMode.php" />
+  <hook hook="integrate_post2_pre" function="BSM_post2_pre" file="$sourcedir/SlowMode.php" />
+  <hook hook="integrate_post_errors" function="BSM_errors" file="$sourcedir/SlowMode.php" />
+  <hook hook="integrate_post2_end" function="BSM_post2_end" file="$sourcedir/SlowMode.php" />
+  <hook hook="integrate_display_buttons" function="BSM_display_info" file="$sourcedir/SlowMode.php" />
+  <hook hook="integrate_daily_maintenance" function="BSM_daily_cleanup" file="$sourcedir/SlowMode.php" />
+  <redirect url="$scripturl?action=admin;area=modsettings;sa=bsm;$session_var=$session_id" timeout="2000" />
+ </install>
+ <uninstall for="2.1 - 2.1.99">
+  <hook hook="integrate_actions" function="BSM_actions" file="$sourcedir/SlowMode.php" reverse="true" />
+  <hook hook="integrate_admin_areas" function="BSM_admin_areas" file="$sourcedir/SlowMode.php" reverse="true" />
+  <hook hook="integrate_modify_modifications" function="BSM_admin" file="$sourcedir/SlowMode.php" reverse="true" />
+  <hook hook="integrate_display_buttons" function="BSM_buttons" file="$sourcedir/SlowMode.php" reverse="true" />
+  <hook hook="integrate_post2_pre" function="BSM_post2_pre" file="$sourcedir/SlowMode.php" reverse="true" />
+  <hook hook="integrate_post_errors" function="BSM_errors" file="$sourcedir/SlowMode.php" reverse="true" />
+  <hook hook="integrate_post2_end" function="BSM_post2_end" file="$sourcedir/SlowMode.php" reverse="true" />
+  <hook hook="integrate_display_buttons" function="BSM_display_info" file="$sourcedir/SlowMode.php" reverse="true" />
+  <hook hook="integrate_daily_maintenance" function="BSM_daily_cleanup" file="$sourcedir/SlowMode.php" reverse="true" />
+  <remove-file name="$sourcedir/SlowMode.php" />
+  <remove-file name="$themedir/SlowMode.template.php" />
+  <remove-file name="$languagedir/SlowMode.english.php" />
+ </uninstall>
+</package-info>

@@ -1,0 +1,30 @@
+<?php
+$txt['bsm_action'] = 'Slow Mode';
+$txt['bsm'] = 'Slow Mode';
+$txt['error_bsm_cooldown'] = 'Slow Mode is active. Please wait %d more minute(s) before posting again.';
+$txt['bsm_desc'] = 'Configure Slow Mode and board cooldowns.';
+$txt['whoallow_bsm'] = 'Managing topic Slow Mode.';
+
+$txt['bsm_topic_title'] = 'Topic Slow Mode';
+$txt['bsm_topic_help'] = 'Set a minimum delay between replies by each member. Set to 0 to disable the topic-specific rule. The board rule still applies.';
+$txt['bsm_current_board'] = 'Current board cooldown: ';
+$txt['bsm_minute_suffix'] = ' minute(s).';
+$txt['bsm_topic_minutes'] = 'Topic cooldown (minutes, 0 to 1440)';
+$txt['bsm_save_topic'] = 'Save Slow Mode';
+$txt['bsm_settings_title'] = 'Slow Mode Settings';
+$txt['bsm_admin_help'] = 'Set per-board cooldowns in minutes (0 disables). Topic-specific rules are managed from individual topics. When both are active, both apply.';
+$txt['bsm_enable'] = ' Enable Slow Mode';
+$txt['bsm_exempt'] = ' Exempt moderators from cooldowns';
+$txt['bsm_board'] = 'Board';
+$txt['bsm_cooldown'] = 'Cooldown (minutes)';
+$txt['bsm_history'] = 'Recent Slow Mode changes';
+$txt['bsm_date'] = 'Date (UTC)';
+$txt['bsm_scope'] = 'Scope';
+$txt['bsm_old'] = 'Old';
+$txt['bsm_new'] = 'New';
+$txt['bsm_member'] = 'Member ID';
+$txt['bsm_save'] = 'Save settings';
+$txt['bsm_min'] = ' min';
+$txt['bsm_notice_board'] = '%d min board';
+$txt['bsm_notice_topic'] = '%d min topic';
+$txt['bsm_notice_wait'] = 'You can post again in approximately %d minute(s).';
