@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>BoredSkull:RelatedTopics</id>
+	<name>Related Topics</name>
+	<version>1.0.3</version>
+	<type>modification</type>
+
+	<install for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<require-file name="Sources/RelatedTopics.php" destination="$sourcedir" />
+		<require-file name="Themes/default/RelatedTopics.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/related_topics.css" destination="$themedir/css" />
+		<require-file name="Themes/default/languages/RelatedTopics.english.php" destination="$languagedir" />
+
+		<database>install.php</database>
+
+		<hook hook="integrate_display_message_list" function="rtopics_display" file="$sourcedir/RelatedTopics.php" />
+		<hook hook="integrate_admin_areas" function="rtopics_admin_areas" file="$sourcedir/RelatedTopics.php" />
+		<hook hook="integrate_modify_modifications" function="rtopics_modify_modifications" file="$sourcedir/RelatedTopics.php" />
+		<hook hook="integrate_admin_search" function="rtopics_admin_search" file="$sourcedir/RelatedTopics.php" />
+		<hook hook="integrate_credits" function="rtopics_credits" file="$sourcedir/RelatedTopics.php" />
+
+		<redirect url="$scripturl?action=admin;area=modsettings;sa=relatedtopics" timeout="3000" />
+	</install>
+
+	<!-- Source-only upgrade: all settings and hooks remain installed. -->
+	<upgrade for="2.1.*" from="1.0.1, 1.0.2">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<require-file name="Sources/RelatedTopics.php" destination="$sourcedir" />
+		<require-file name="Themes/default/RelatedTopics.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/related_topics.css" destination="$themedir/css" />
+		<require-file name="Themes/default/languages/RelatedTopics.english.php" destination="$languagedir" />
+	</upgrade>
+
+	<uninstall for="2.1.*">
+		<hook hook="integrate_display_message_list" function="rtopics_display" file="$sourcedir/RelatedTopics.php" reverse="true" />
+		<hook hook="integrate_admin_areas" function="rtopics_admin_areas" file="$sourcedir/RelatedTopics.php" reverse="true" />
+		<hook hook="integrate_modify_modifications" function="rtopics_modify_modifications" file="$sourcedir/RelatedTopics.php" reverse="true" />
+		<hook hook="integrate_admin_search" function="rtopics_admin_search" file="$sourcedir/RelatedTopics.php" reverse="true" />
+		<hook hook="integrate_credits" function="rtopics_credits" file="$sourcedir/RelatedTopics.php" reverse="true" />
+
+		<database>uninstall.php</database>
+		
+		<remove-file name="$sourcedir/RelatedTopics.php" />
+		<remove-file name="$themedir/RelatedTopics.template.php" />
+		<remove-file name="$themedir/css/related_topics.css" />
+		<remove-file name="$languagedir/RelatedTopics.english.php" />
+	</uninstall>
+</package-info>
