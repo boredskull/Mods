@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>BoredSkull:ActivityStream</id>
+	<name>Activity Stream</name>
+	<version>1.1.2</version>
+	<type>modification</type>
+
+	<install for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<license type="file" parsebbc="false">license.txt</license>
+
+		<database>install.php</database>
+
+		<require-file name="Sources/ActivityStream.php" destination="$sourcedir" />
+		<require-file name="Themes/default/ActivityStream.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/activitystream.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/activitystream.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/languages/ActivityStream.english.php" destination="$languagedir" />
+
+		<hook hook="integrate_pre_include" function="$sourcedir/ActivityStream.php" />
+		<hook hook="integrate_actions" function="ActivityStream::actions" />
+		<hook hook="integrate_menu_buttons" function="ActivityStream::menuButtons" />
+		<hook hook="integrate_profile_areas" function="ActivityStream::profileAreas" />
+		<hook hook="integrate_delete_members" function="ActivityStream::deleteMembers" />
+		<hook hook="integrate_load_permissions" function="ActivityStream::loadPermissions" />
+		<hook hook="integrate_load_illegal_guest_permissions" function="ActivityStream::illegalGuestPermissions" />
+		<hook hook="integrate_admin_areas" function="ActivityStream::adminAreas" />
+		<hook hook="integrate_modify_modifications" function="ActivityStream::modifyModifications" />
+		<hook hook="integrate_admin_search" function="ActivityStream::adminSearch" />
+		<hook hook="integrate_whos_online" function="ActivityStream::whosOnline" />
+		<hook hook="integrate_credits" function="ActivityStream::credits" />
+
+		<redirect url="?action=admin;area=modsettings;sa=activitystream" timeout="3000" />
+	</install>
+
+	<!-- 1.0.x and 1.1.x: new files, plus the hooks added in 1.1.2 (adding a hook that is already there does nothing) -->
+	<upgrade from="1.0.*, 1.1.0, 1.1.1" for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+
+		<database>install.php</database>
+
+		<require-file name="Sources/ActivityStream.php" destination="$sourcedir" />
+		<require-file name="Themes/default/ActivityStream.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/activitystream.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/activitystream.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/languages/ActivityStream.english.php" destination="$languagedir" />
+
+		<hook hook="integrate_pre_include" function="$sourcedir/ActivityStream.php" />
+		<hook hook="integrate_actions" function="ActivityStream::actions" />
+		<hook hook="integrate_menu_buttons" function="ActivityStream::menuButtons" />
+		<hook hook="integrate_profile_areas" function="ActivityStream::profileAreas" />
+		<hook hook="integrate_delete_members" function="ActivityStream::deleteMembers" />
+		<hook hook="integrate_load_permissions" function="ActivityStream::loadPermissions" />
+		<hook hook="integrate_load_illegal_guest_permissions" function="ActivityStream::illegalGuestPermissions" />
+		<hook hook="integrate_admin_areas" function="ActivityStream::adminAreas" />
+		<hook hook="integrate_modify_modifications" function="ActivityStream::modifyModifications" />
+		<hook hook="integrate_admin_search" function="ActivityStream::adminSearch" />
+		<hook hook="integrate_whos_online" function="ActivityStream::whosOnline" />
+		<hook hook="integrate_credits" function="ActivityStream::credits" />
+
+		<redirect url="?action=admin;area=modsettings;sa=activitystream" timeout="3000" />
+	</upgrade>
+
+	<uninstall for="2.1.*">
+		<hook hook="integrate_pre_include" function="$sourcedir/ActivityStream.php" reverse="true" />
+		<hook hook="integrate_actions" function="ActivityStream::actions" reverse="true" />
+		<hook hook="integrate_menu_buttons" function="ActivityStream::menuButtons" reverse="true" />
+		<hook hook="integrate_profile_areas" function="ActivityStream::profileAreas" reverse="true" />
+		<hook hook="integrate_delete_members" function="ActivityStream::deleteMembers" reverse="true" />
+		<hook hook="integrate_load_permissions" function="ActivityStream::loadPermissions" reverse="true" />
+		<hook hook="integrate_load_illegal_guest_permissions" function="ActivityStream::illegalGuestPermissions" reverse="true" />
+		<hook hook="integrate_admin_areas" function="ActivityStream::adminAreas" reverse="true" />
+		<hook hook="integrate_modify_modifications" function="ActivityStream::modifyModifications" reverse="true" />
+		<hook hook="integrate_admin_search" function="ActivityStream::adminSearch" reverse="true" />
+		<hook hook="integrate_whos_online" function="ActivityStream::whosOnline" reverse="true" />
+		<hook hook="integrate_credits" function="ActivityStream::credits" reverse="true" />
+
+		<!-- Runs only when "Remove all data associated with this modification" is ticked -->
+		<database>uninstall.php</database>
+
+		<remove-file name="$sourcedir/ActivityStream.php" />
+		<remove-file name="$themedir/ActivityStream.template.php" />
+		<remove-file name="$themedir/css/activitystream.css" />
+		<remove-file name="$themedir/scripts/activitystream.js" />
+		<remove-file name="$languagedir/ActivityStream.english.php" />
+	</uninstall>
+</package-info>
