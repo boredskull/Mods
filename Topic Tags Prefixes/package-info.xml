@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info">
+ <id>BoredSkull:TopicTagsPrefixes</id>
+ <name>Topic Tags &amp; Prefixes</name>
+ <version>1.0.2</version>
+ <type>modification</type>
+ <install for="2.1.0 - 2.1.99">
+  <readme type="file" parsebbc="false">README.md</readme>
+  <license type="file">LICENSE.txt</license>
+  <database>install.php</database>
+  <require-file name="Sources/TopicTags.php" destination="$sourcedir" />
+  <require-file name="Themes/default/TopicTags.template.php" destination="$themedir" />
+  <require-file name="Themes/default/languages/TopicTags.english.php" destination="$languagedir" />
+  <require-file name="Themes/default/css/topic_tags.css" destination="$themedir/css" />
+  <require-file name="Themes/default/scripts/topic_tags.js" destination="$themedir/scripts" />
+  <hook hook="integrate_actions" function="BoredTopicTags::hookActions" file="$sourcedir/TopicTags.php" />
+  <hook hook="integrate_admin_areas" function="BoredTopicTags::hookAdmin" file="$sourcedir/TopicTags.php" />
+  <hook hook="integrate_post_end" function="BoredTopicTags::hookPostForm" file="$sourcedir/TopicTags.php" />
+  <hook hook="integrate_create_topic" function="BoredTopicTags::hookCreateTopic" file="$sourcedir/TopicTags.php" />
+  <hook hook="integrate_remove_topics" function="BoredTopicTags::hookRemoveTopics" file="$sourcedir/TopicTags.php" />
+  <hook hook="integrate_messageindex_buttons" function="BoredTopicTags::hookMessageIndex" file="$sourcedir/TopicTags.php" />
+  <hook hook="integrate_display_buttons" function="BoredTopicTags::hookDisplay" file="$sourcedir/TopicTags.php" />
+ </install>
+ <uninstall for="2.1.0 - 2.1.99">
+  <hook hook="integrate_actions" function="BoredTopicTags::hookActions" file="$sourcedir/TopicTags.php" reverse="true" />
+  <hook hook="integrate_menu_buttons" function="BoredTopicTags::hookMenu" file="$sourcedir/TopicTags.php" reverse="true" />
+  <hook hook="integrate_admin_areas" function="BoredTopicTags::hookAdmin" file="$sourcedir/TopicTags.php" reverse="true" />
+  <hook hook="integrate_post_end" function="BoredTopicTags::hookPostForm" file="$sourcedir/TopicTags.php" reverse="true" />
+  <hook hook="integrate_create_topic" function="BoredTopicTags::hookCreateTopic" file="$sourcedir/TopicTags.php" reverse="true" />
+  <hook hook="integrate_remove_topics" function="BoredTopicTags::hookRemoveTopics" file="$sourcedir/TopicTags.php" reverse="true" />
+  <hook hook="integrate_messageindex_buttons" function="BoredTopicTags::hookMessageIndex" file="$sourcedir/TopicTags.php" reverse="true" />
+  <hook hook="integrate_display_buttons" function="BoredTopicTags::hookDisplay" file="$sourcedir/TopicTags.php" reverse="true" />
+  <remove-file name="$sourcedir/TopicTags.php" />
+  <remove-file name="$themedir/TopicTags.template.php" />
+  <remove-file name="$languagedir/TopicTags.english.php" />
+  <remove-file name="$themedir/css/topic_tags.css" />
+  <remove-file name="$themedir/scripts/topic_tags.js" />
+  <database>uninstall-db.php</database>
+ </uninstall>
+</package-info>

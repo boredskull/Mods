@@ -1,0 +1,26 @@
+/* Topic Tags & Prefixes: inherits SMF 2.1 and bsmodern theme colours */
+.tp-prefix { display:inline-block; font-size:.76em; line-height:1.7; text-decoration:none!important; border-radius:.3em; padding:0 .5em; font-weight:700; white-space:nowrap; vertical-align:baseline; }
+.tp-prefix:hover {filter:brightness(.9)}
+.tp-tag,.tp-discover-tag {display:inline-block; border:1px solid #c5d7e5; background:#edf4f9; color:#28557a!important; border-radius:4px; font-size:.8em; padding:2px 7px; margin:2px; text-decoration:none!important;}
+.tp-tag:hover,.tp-discover-tag:hover{background:#dbeaf5}
+.tp-topic-tags{display:inline-block; margin-left:.5em; font-weight:400}
+.tp-inline-tags{display:inline-block; margin-left:.25em}
+.tp-nav{margin:.6rem 0 1rem; display:flex;gap:.4rem;flex-wrap:wrap}
+.tp-block{padding:1rem; margin-bottom:1rem}
+.tp-search{display:flex; align-items:center;gap:.5rem; flex-wrap:wrap; margin:.8rem 0}
+.tp-cloud{display:flex;gap:4px;flex-wrap:wrap;align-items:center;line-height:2.2}
+.tp-discover-tag{font-size:.95em; padding:.22em .7em}
+.tp-count{font-size:.8em;color:#516979; margin-left:.35em}
+.tp-row{display:flex; justify-content:space-between;align-items:center;gap:.5em;flex-wrap:wrap}
+.tp-topic-list{border-top:1px solid #dce7ef; margin-top:.7rem}
+.tp-topic-row{display:flex; justify-content:space-between;align-items:center;gap:1rem;border-bottom:1px solid #dce7ef;padding:.75rem .2rem}
+.tp-topic-main{min-width:0;overflow-wrap:anywhere}
+.tp-pager{margin-top:1rem}
+.tp-tools{margin:.6rem 0}
+.tp-long-input{width:min(100%, 30rem);box-sizing:border-box}
+.tp-admin-table{width:100%}
+.tp-admin-table td,.tp-admin-table th{padding:.5rem;vertical-align:middle}
+.tp-inline-form{display:flex; gap:.3em; flex-wrap:wrap;align-items:center}
+.tp-composer-box{margin:.6em 0; padding:.75em; background:var(--windowbg,#f6f9fc); border:1px solid #bfd1e0; border-radius:.4em;}
+.tp-composer-box label{display:block;margin:.4em 0}
+@media(max-width:650px){.tp-topic-row{align-items:flex-start;flex-direction:column;gap:.3rem}.tp-admin-table{display:block;overflow-x:auto}.tp-composer-box{width:100%;box-sizing:border-box}}
