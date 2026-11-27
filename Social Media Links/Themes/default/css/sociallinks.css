@@ -1,0 +1,74 @@
+/* Social Media Links for SMF 2.1 */
+
+.custom_fields_below_signature .sociallinks_row {
+	list-style: none;
+}
+.sociallinks {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin: 6px 0 2px;
+	padding-top: 6px;
+	border-top: 1px dashed rgba(0, 0, 0, 0.12);
+}
+.sociallinks_icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+	min-width: 26px;
+	height: 26px;
+	padding: 0 4px;
+	border-radius: 5px;
+	font-size: 16px;
+	line-height: 1;
+	color: #6b7280;
+	text-decoration: none !important;
+	transition: color .15s, background-color .15s, transform .15s;
+}
+.sociallinks_icon:hover,
+.sociallinks_icon:focus-visible {
+	color: var(--sl-brand, #333);
+	background: rgba(0, 0, 0, 0.05);
+	transform: translateY(-1px);
+}
+.sociallinks_brand .sociallinks_icon {
+	color: var(--sl-brand, #333);
+}
+.sociallinks_label {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+}
+.sociallinks_labels .sociallinks_label {
+	position: static;
+	width: auto;
+	height: auto;
+	clip: auto;
+	font-size: 0.85em;
+}
+.sociallinks_labels .sociallinks_icon {
+	padding: 0 7px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Profile form */
+.sociallinks_form dt label {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+.sociallinks_formicon {
+	display: inline-flex;
+	width: 22px;
+	justify-content: center;
+	font-size: 18px;
+	color: var(--sl-brand, #333);
+}
+.sociallinks_form input[type="text"] {
+	width: 100%;
+	max-width: 380px;
+}
