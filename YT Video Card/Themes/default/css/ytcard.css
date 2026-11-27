@@ -1,0 +1,136 @@
+/* YouTube Video Card for SMF 2.1 */
+
+.ytcard {
+	box-sizing: border-box;
+	max-width: 560px;
+	margin: .6em 0;
+	border: 1px solid rgba(128, 128, 128, .35);
+	border-radius: 8px;
+	overflow: hidden;
+	background: rgba(128, 128, 128, .06);
+	text-align: left;
+	line-height: 1.4;
+}
+
+.ytcard_player {
+	position: relative;
+	width: 100%;
+	padding-top: 56.25%;
+	background: #000;
+}
+
+.ytcard_player iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+.ytcard_body {
+	padding: .75em 1em;
+}
+
+.ytcard_title {
+	display: block;
+	font-size: 1.15em;
+	font-weight: bold;
+	overflow-wrap: anywhere;
+}
+
+.ytcard_meta {
+	margin: .2em 0 .6em;
+	font-size: .9em;
+	opacity: .8;
+}
+
+.ytcard_desc_text {
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+
+.ytcard_collapsed {
+	/* Four lines at the card's 1.4 line height, so no half-cut line shows. */
+	max-height: 5.6em;
+	overflow: hidden;
+}
+
+.ytcard_toggle {
+	margin-top: .3em;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+	font-weight: bold;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.ytcard_toggle[hidden] {
+	display: none;
+}
+
+.ytcard_comments {
+	margin-top: .9em;
+	padding-top: .6em;
+	border-top: 1px solid rgba(128, 128, 128, .35);
+}
+
+.ytcard_comments_title {
+	margin-bottom: .5em;
+	font-weight: bold;
+}
+
+.ytcard_comments_list {
+	max-height: 420px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	overflow-y: auto;
+}
+
+.ytcard_comment {
+	display: flex;
+	gap: .6em;
+	margin: 0 0 .75em;
+	padding: 0;
+}
+
+.ytcard_avatar {
+	flex: 0 0 32px;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+}
+
+.ytcard_comment_main {
+	min-width: 0;
+	flex: 1 1 auto;
+}
+
+.ytcard_comment_head {
+	font-size: .85em;
+	opacity: .85;
+}
+
+.ytcard_author {
+	font-weight: bold;
+}
+
+.ytcard_comment_text {
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+
+.ytcard_note,
+.ytcard_more {
+	display: block;
+	margin-top: .6em;
+	font-size: .9em;
+}
+
+.ytcard_note {
+	opacity: .75;
+}
