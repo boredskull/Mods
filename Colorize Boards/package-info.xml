@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>BoredSkull:ColorizeBoards</id>
+	<name>Colorize Boards</name>
+	<version>1.0.2</version>
+	<type>modification</type>
+
+	<install for="2.1.*">
+		<readme parsebbc="true">readme.txt</readme>
+		<require-file name="Sources/ColorizeBoards.php" destination="$sourcedir" />
+		<require-file name="Languages/ColorizeBoards.english.php" destination="$languagedir" />
+
+		<!-- Admin forms + saving -->
+		<hook hook="integrate_edit_board" function="colorize_boards_edit_board" file="$sourcedir/ColorizeBoards.php" />
+		<hook hook="integrate_edit_category" function="colorize_boards_edit_category" file="$sourcedir/ColorizeBoards.php" />
+		<hook hook="integrate_modify_board" function="colorize_boards_modify_board" file="$sourcedir/ColorizeBoards.php" />
+		<hook hook="integrate_modify_category" function="colorize_boards_modify_category" file="$sourcedir/ColorizeBoards.php" />
+		<hook hook="integrate_delete_board" function="colorize_boards_delete_board" file="$sourcedir/ColorizeBoards.php" />
+		<hook hook="integrate_delete_category" function="colorize_boards_delete_category" file="$sourcedir/ColorizeBoards.php" />
+		<hook hook="integrate_modify_board_settings" function="colorize_boards_board_settings" file="$sourcedir/ColorizeBoards.php" />
+		<hook hook="integrate_credits" function="colorize_credits" file="$sourcedir/ColorizeBoards.php" />
+
+		<!-- Front end -->
+		<hook hook="integrate_load_theme" function="colorize_boards_load_theme" file="$sourcedir/ColorizeBoards.php" />
+		<hook hook="integrate_messageindex_buttons" function="colorize_boards_messageindex" file="$sourcedir/ColorizeBoards.php" />
+
+		<code>install.php</code>
+		<redirect url="?action=admin;area=manageboards;sa=settings" timeout="3000" />
+	</install>
+
+	<!-- In-place maintenance upgrade: retain all existing settings and hooks. -->
+	<upgrade for="2.1.*" from="1.0.1">
+		<readme parsebbc="true">readme.txt</readme>
+		<require-file name="Sources/ColorizeBoards.php" destination="$sourcedir" />
+		<require-file name="Languages/ColorizeBoards.english.php" destination="$languagedir" />
+		<redirect url="?action=admin;area=manageboards;sa=settings" timeout="3000" />
+	</upgrade>
+
+	<uninstall for="2.1.*">
+		<hook hook="integrate_edit_board" function="colorize_boards_edit_board" file="$sourcedir/ColorizeBoards.php" reverse="true" />
+		<hook hook="integrate_edit_category" function="colorize_boards_edit_category" file="$sourcedir/ColorizeBoards.php" reverse="true" />
+		<hook hook="integrate_modify_board" function="colorize_boards_modify_board" file="$sourcedir/ColorizeBoards.php" reverse="true" />
+		<hook hook="integrate_modify_category" function="colorize_boards_modify_category" file="$sourcedir/ColorizeBoards.php" reverse="true" />
+		<hook hook="integrate_delete_board" function="colorize_boards_delete_board" file="$sourcedir/ColorizeBoards.php" reverse="true" />
+		<hook hook="integrate_delete_category" function="colorize_boards_delete_category" file="$sourcedir/ColorizeBoards.php" reverse="true" />
+		<hook hook="integrate_modify_board_settings" function="colorize_boards_board_settings" file="$sourcedir/ColorizeBoards.php" reverse="true" />
+		<hook hook="integrate_load_theme" function="colorize_boards_load_theme" file="$sourcedir/ColorizeBoards.php" reverse="true" />
+		<hook hook="integrate_messageindex_buttons" function="colorize_boards_messageindex" file="$sourcedir/ColorizeBoards.php" reverse="true" />
+		<hook hook="integrate_credits" function="colorize_credits" file="$sourcedir/ColorizeBoards.php" reverse="true" />
+
+		<remove-file name="$sourcedir/ColorizeBoards.php" />
+		<remove-file name="$languagedir/ColorizeBoards.english.php" />
+
+		<!-- Only runs if "remove all data" is ticked -->
+		<database>uninstall-db.php</database>
+	</uninstall>
+</package-info>
