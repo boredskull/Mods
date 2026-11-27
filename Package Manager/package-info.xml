@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info.dtd">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+  <id>boredskull:package-manager-enhancements</id>
+  <name>Package Manager Enhancements</name>
+  <version>1.0.0</version>
+  <type>modification</type>
+  <install for="2.1 - 2.1.99">
+    <readme parsebbc="false">README.md</readme>
+    <license parsebbc="false">LICENSE.txt</license>
+    <require-file name="Sources/BsPackageManager.php" destination="$sourcedir" />
+    <require-file name="Themes/default/BsPackageManager.template.php" destination="$themedir" />
+    <require-file name="Themes/default/languages/BsPackageManager.english.php" destination="$languagedir" />
+    <require-file name="Themes/default/css/BsPackageManager.css" destination="$themedir/css" />
+    <require-file name="Themes/default/scripts/BsPackageManager.js" destination="$themedir/scripts" />
+    <hook hook="integrate_admin_areas" function="bspm_register_admin_areas" file="$sourcedir/BsPackageManager.php" />
+    <hook hook="integrate_manage_packages" function="bspm_register_dashboard" file="$sourcedir/BsPackageManager.php" />
+    <hook hook="integrate_package_get" function="bspm_register_package_get_tabs" file="$sourcedir/BsPackageManager.php" />
+    <hook hook="integrate_credits" function="bspm_credits" file="$sourcedir/BsPackageManager.php" />
+    <redirect url="?action=admin;area=packages;sa=browse" timeout="3000" />
+  </install>
+  <uninstall for="2.1 - 2.1.99">
+    <hook hook="integrate_admin_areas" function="bspm_register_admin_areas" file="$sourcedir/BsPackageManager.php" reverse="true" />
+    <hook hook="integrate_manage_packages" function="bspm_register_dashboard" file="$sourcedir/BsPackageManager.php" reverse="true" />
+    <hook hook="integrate_package_get" function="bspm_register_package_get_tabs" file="$sourcedir/BsPackageManager.php" reverse="true" />
+    <hook hook="integrate_credits" function="bspm_credits" file="$sourcedir/BsPackageManager.php" reverse="true" />
+    <remove-file name="$sourcedir/BsPackageManager.php" />
+    <remove-file name="$themedir/BsPackageManager.template.php" />
+    <remove-file name="$languagedir/BsPackageManager.english.php" />
+    <remove-file name="$themedir/css/BsPackageManager.css" />
+    <remove-file name="$themedir/scripts/BsPackageManager.js" />
+  </uninstall>
+</package-info>

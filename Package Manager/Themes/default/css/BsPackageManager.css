@@ -1,0 +1,178 @@
+/* Scoped to Package Manager; adapts to the active SMF theme. */
+.bspm-page .bspm-intro{padding:1em;margin-bottom:1em}
+.bspm-page .bspm-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:12px 0}
+.bspm-page .bspm-stat{display:flex;flex-direction:column;align-items:flex-start;padding:15px;border-radius:5px}
+.bspm-page .bspm-stat strong{font-size:1.8em}.bspm-page .bspm-stat span{font-size:.9em}
+.bspm-page .bspm-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0}
+.bspm-page .bspm-toolbar input{min-width:180px;flex:1}
+.bspm-page .bspm-scroll{overflow-x:auto}
+.bspm-page .bspm-table{width:100%;border-collapse:collapse}.bspm-page .bspm-table th,.bspm-page .bspm-table td{padding:10px;vertical-align:top;text-align:left}
+.bspm-page .bspm-table td small{display:block;opacity:.7;overflow-wrap:anywhere}
+.bspm-page .bspm-table tbody tr:nth-child(even){background:rgba(100,120,150,.06)}
+.bspm-page .bspm-table td a{display:inline-block;margin-right:8px}
+.bspm-page .bspm-pill{display:inline-block;padding:.2em .55em;border-radius:10px;background:rgba(120,130,140,.12);font-size:.9em}
+.bspm-page .bspm-update{border:1px solid #af7a1e}.bspm-page .bspm-actions{display:flex;gap:10px;flex-wrap:wrap}
+.bspm-dropzone{border:2px dashed #7898b2;border-radius:7px;text-align:center;padding:20px;margin:12px 0;outline-offset:3px;background:rgba(130,155,180,.06)}
+.bspm-dropzone.bspm-dragging{border-color:#2860aa;background:rgba(65,120,210,.14)}
+.bspm-dropzone:focus-visible{outline:3px solid #2860aa}.bspm-dropzone p{margin:5px}
+.bspm-queue{list-style:none;margin:12px 0;padding:0}.bspm-queue li{display:flex;flex-wrap:wrap;align-items:center;gap:8px;border-bottom:1px solid rgba(125,125,125,.25);padding:8px}
+.bspm-queue progress{max-width:180px;flex:1}.bspm-queue .bspm-filename{flex:1;overflow-wrap:anywhere}
+.bspm-queue .bspm-result{width:100%}.bspm-queue .bspm-error{color:#a32222}
+.bspm-notice{margin:10px 0;padding:10px;border-left:3px solid #cc9415;background:rgba(200,170,70,.08)}
+.bspm-native-help{font-size:.9em;margin:10px 0}
+@media(max-width:650px){.bspm-page .bspm-table{min-width:580px}.bspm-page .bspm-toolbar>*{width:100%;box-sizing:border-box}}
+@media(prefers-reduced-motion:reduce){.bspm-dropzone{transition:none}}
+
+/* v1.0.2: one visible upload workflow; original SMF form remains in details. */
+.bspm-upload{padding:14px 16px;margin:12px 0;background:rgba(130,155,180,.035);border:1px solid rgba(100,130,160,.25);border-radius:5px}
+.bspm-upload-title{margin:.4em 0;font-size:1.1em}
+.bspm-upload-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 0}
+.bspm-upload-controls label{font-weight:bold}
+.bspm-upload-controls input[type=file]{max-width:100%;flex:1;min-width:180px}
+.bspm-upload-primary{min-width:180px}
+.bspm-fallback{margin-top:16px;padding-top:12px;border-top:1px solid rgba(100,130,160,.25)}
+.bspm-fallback summary{cursor:pointer;text-decoration:underline}
+.bspm-fallback form{padding:12px 0}
+.bspm-upload .bspm-queue:empty{display:none}
+.bspm-upload .bspm-dropzone{cursor:pointer}
+@media(max-width:650px){.bspm-upload-controls>*{width:100%}.bspm-upload-primary{width:100%}}
+
+/* v1.0.3 dashboard redesign: scoped, responsive and compatible with SMF theme colours. */
+.bspm-page{display:grid;gap:16px;line-height:1.5}
+.bspm-page .bspm-hero{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;padding:22px 24px;border-top:4px solid #547f9f;border-radius:5px}
+.bspm-page .bspm-hero h2{font-size:1.6em;margin:0 0 6px;color:#244e6c}
+.bspm-page .bspm-hero p{max-width:690px;margin:0}
+.bspm-page .bspm-eyebrow{font-size:.82em;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:#557a95;margin-bottom:6px!important}
+.bspm-page .bspm-summary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.bspm-page .bspm-stat{padding:17px 18px;display:flex;flex-direction:column;gap:4px;border:1px solid rgba(90,125,150,.18);border-radius:5px}
+.bspm-page .bspm-stat-number{font-size:2.1em;font-weight:700;line-height:1.15;color:#275c80}
+.bspm-page .bspm-stat-label{font-weight:700}
+.bspm-page .bspm-stat-help{font-size:.84em;opacity:.75}
+.bspm-page .bspm-stat-available{border-left:4px solid #c58b29}
+.bspm-page .bspm-pending{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:16px 20px;border:1px solid #e0c48e;border-left:4px solid #bd8423;background:#fcf9f2;border-radius:5px;color:#443a2c}
+.bspm-page .bspm-pending p{margin:4px 0 0}
+.bspm-page .bspm-pending-empty{border-color:#c6d8e2;border-left-color:#5b90ad;background:#f4f8fb;display:block;color:#294c64}
+.bspm-page .bspm-panel{padding:18px 20px;border-radius:5px}
+.bspm-page .bspm-panel-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:14px}
+.bspm-page .bspm-panel-head h3{font-size:1.2em;margin:0 0 3px;color:#244e6c}
+.bspm-page .bspm-panel-head p{margin:0;opacity:.8}
+.bspm-page .bspm-toolbar{display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin:0 0 16px}
+.bspm-page .bspm-field{display:flex;flex-direction:column;gap:5px;min-width:150px}
+.bspm-page .bspm-field label{font-weight:600;font-size:.9em}
+.bspm-page .bspm-field input,.bspm-page .bspm-field select{padding:9px;min-height:38px;box-sizing:border-box;max-width:100%}
+.bspm-page .bspm-field-search{flex:1;min-width:220px}
+.bspm-page .bspm-table th,.bspm-page .bspm-table td{padding:12px 10px}
+.bspm-page .bspm-table details{margin-top:6px;max-width:380px}
+.bspm-page .bspm-table summary{cursor:pointer}
+.bspm-page .bspm-pill{border-radius:4px;padding:4px 8px;font-weight:600}
+.bspm-page .bspm-pill.bspm-available{background:#fff2d5;color:#745018}
+.bspm-page .bspm-pill.bspm-update{background:#e6f1fa;color:#235477;border:0}
+.bspm-page .bspm-footnote{font-size:.85em;opacity:.75;margin:0 2px 12px}
+.bspm-page #bspm-empty{padding:15px}
+@media(max-width:900px){.bspm-page .bspm-summary{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:550px){.bspm-page .bspm-summary{grid-template-columns:1fr 1fr;gap:8px}.bspm-page .bspm-hero,.bspm-page .bspm-panel{padding:14px}.bspm-page .bspm-stat{padding:12px}.bspm-page .bspm-stat-number{font-size:1.7em}.bspm-page .bspm-pending{flex-direction:column;align-items:flex-start}.bspm-page .bspm-field{width:100%}}
+
+/* Responsive package rows. */
+.bspm-page .bspm-package-list{min-width:0}
+.bspm-page .bspm-package-list td{vertical-align:middle}
+.bspm-package-identity{display:flex;align-items:center;gap:12px}
+.bspm-package-icon{width:40px;height:40px;flex:0 0 40px;display:grid;place-items:center;border-radius:10px;background:rgba(70,125,190,.12);font-size:23px}
+.bspm-page .bspm-row-actions{display:flex;align-items:center;justify-content:flex-end;gap:12px}
+.bspm-page .bspm-details{position:relative;margin:0}
+.bspm-page .bspm-details summary{cursor:pointer;text-decoration:underline}
+.bspm-page .bspm-details-body{position:static;width:min(320px,70vw);max-height:320px;overflow:auto;padding:12px;background:var(--window_bg,#fff);color:inherit;border:1px solid rgba(110,130,150,.4);border-radius:7px;box-shadow:0 6px 22px rgba(0,0,0,.13)}
+.bspm-page .bspm-details-body p{margin:0 0 8px;overflow-wrap:anywhere}
+.bspm-page .bspm-package-list .bspm-pill{white-space:nowrap;border-radius:14px}
+.bspm-page .bspm-package-list .bspm-installed{background:rgba(44,148,83,.14);color:inherit;border:1px solid rgba(44,148,83,.35)}
+.bspm-page .bspm-package-list tr[hidden]{display:none!important}
+@media(max-width:700px){
+.bspm-page .bspm-package-list,.bspm-page .bspm-package-list tbody{display:block;min-width:0}
+.bspm-page .bspm-package-list thead{display:none}
+.bspm-page .bspm-package-list tr{display:grid;grid-template-columns:1fr auto;gap:10px;margin:0 0 12px;padding:14px;border:1px solid rgba(110,130,150,.28);border-radius:10px}
+.bspm-page .bspm-package-list td{display:block;padding:0!important;border:0!important;min-width:0}
+.bspm-page .bspm-package-list td:first-child{grid-column:1/-1}
+.bspm-page .bspm-package-list td:nth-child(2){grid-column:1;grid-row:2}
+.bspm-page .bspm-package-list td:nth-child(2):before{content:'Version ';opacity:.7}
+.bspm-page .bspm-package-list td:nth-child(3){grid-column:2;grid-row:2;text-align:right}
+.bspm-page .bspm-package-list td:last-child{grid-column:1/-1;grid-row:3}
+}
+
+/* Native Browse Packages enhancement: original SMF controls remain untouched. */
+.bspm-native-panel{padding:18px;margin:14px 0;border-radius:9px}
+.bspm-native-panel h3{margin:0 0 5px}
+.bspm-native-panel p{margin:5px 0 12px}
+.bspm-native-stats{display:flex;align-items:center;gap:7px;margin:12px 0}
+.bspm-native-stats strong{font-size:1.4em}
+.bspm-native-controls{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px}
+.bspm-native-field{display:flex;flex-direction:column;gap:5px;flex:1 1 180px}
+.bspm-native-field input,.bspm-native-field select{width:100%;max-width:400px;box-sizing:border-box}
+.bspm-native-list{width:100%}
+.bspm-native-list .bspm-native-row td{padding-top:13px;padding-bottom:13px;vertical-align:middle}
+.bspm-native-list .bspm-native-row:hover{background:rgba(110,140,175,.08)}
+.bspm-native-list .bspm-native-row[hidden]{display:none!important}
+@media(max-width:700px){
+ .bspm-native-panel{padding:12px}
+ .bspm-native-list,.bspm-native-list tbody{display:block;min-width:0}
+ .bspm-native-list thead{display:none}
+ .bspm-native-list .bspm-native-row{display:block;margin:10px 0;padding:12px;border:1px solid rgba(120,140,160,.3);border-radius:8px}
+ .bspm-native-list .bspm-native-row td{display:block;padding:6px 0!important;border:0!important;overflow-wrap:anywhere}
+ .bspm-native-list .bspm-native-row td a.button{display:inline-block}
+}
+
+/* Native options and permissions: layout-only enhancements. */
+.bspm-settings-intro{padding:18px 20px;margin:0 0 18px;border:1px solid rgba(120,140,160,.25);border-radius:10px}
+.bspm-settings-intro h3{margin:0 0 8px;font-size:1.25em}
+.bspm-settings-intro p{margin:0;line-height:1.55}
+.bspm-settings-warning{margin-top:12px!important;padding:12px;border-inline-start:4px solid #b47722;background:rgba(180,119,34,.09);border-radius:4px}
+.bspm-settings-page .bspm-settings-section{margin-bottom:12px}
+.bspm-settings-page fieldset.bspm-settings-section{padding:16px;border-radius:9px;border:1px solid rgba(120,140,160,.3)}
+.bspm-settings-page .bspm-settings-control{max-width:100%;box-sizing:border-box;border-radius:5px}
+.bspm-settings-page table.table_grid{width:100%}
+.bspm-settings-page table.table_grid td{padding-top:10px;padding-bottom:10px;vertical-align:middle;overflow-wrap:anywhere}
+.bspm-settings-page table.table_grid tr:hover td{background:rgba(110,140,175,.06)}
+.bspm-perms-filter-label{display:flex;flex-direction:column;gap:6px;margin:12px 0;font-weight:600}
+.bspm-perms-filter-label input{width:min(100%,400px);padding:8px}
+.bspm-settings-page tr[hidden]{display:none!important}
+@media(max-width:700px){.bspm-settings-intro{padding:13px}.bspm-settings-page fieldset.bspm-settings-section{padding:10px}.bspm-settings-page table.table_grid{display:block;overflow-x:auto}.bspm-settings-page .bspm-settings-control{width:100%}}
+
+.bspm-dashboard-shortcut{display:flex;justify-content:flex-end;margin:0 0 12px}
+
+/* 1.0.0: clickable status filters with a neutral default library. */
+.bspm-page a.bspm-stat{width:100%;font:inherit;text-align:left;cursor:pointer;color:inherit;background:var(--window_bg,#fff);transition:border-color .15s ease,box-shadow .15s ease,transform .15s ease}
+.bspm-page a.bspm-stat:hover{box-shadow:0 3px 12px rgba(30,50,70,.14);transform:translateY(-1px)}
+.bspm-page a.bspm-stat:focus-visible{outline:3px solid #286ca1;outline-offset:3px}
+.bspm-page .bspm-stat-action{font-size:.8em;opacity:.72;text-decoration:underline;text-underline-offset:2px}
+.bspm-page .bspm-stat-update{border-left:4px solid #3978a9}
+.bspm-page .bspm-stat-installed{border-left:4px solid #388457}
+.bspm-page .bspm-stat-all{border-left:4px solid #7a838c}
+.bspm-page .bspm-stat-active{box-shadow:inset 0 0 0 2px currentColor}
+.bspm-page .bspm-hero-actions{display:flex;flex-wrap:wrap;gap:8px}
+.bspm-page #bspm-packages{border-left:4px solid transparent;transition:border-color .15s ease}
+.bspm-page #bspm-packages[data-active-filter="available"]{border-left-color:#c58b29}
+.bspm-page #bspm-packages[data-active-filter="update"]{border-left-color:#3978a9}
+.bspm-page #bspm-packages[data-active-filter="installed"]{border-left-color:#388457}
+.bspm-page .bspm-pending{border-left:1px solid #e0c48e}
+.bspm-page .bspm-pending-empty{border-left:1px solid #c6d8e2}
+@media(prefers-reduced-motion:reduce){.bspm-page a.bspm-stat,.bspm-page #bspm-packages{transition:none}.bspm-page a.bspm-stat:hover{transform:none}}
+
+/* Dashboard refinement: avoid restrictive button rules in custom themes. */
+.bspm-page a.bspm-stat,.bspm-page a.bspm-stat:link,.bspm-page a.bspm-stat:visited{
+ display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+ justify-content:flex-start!important;gap:5px!important;min-height:138px!important;height:auto!important;
+ width:auto!important;min-width:0!important;box-sizing:border-box!important;
+ padding:16px 18px!important;overflow:visible!important;white-space:normal!important;
+ text-align:left!important;line-height:1.4!important;
+ text-decoration:none!important;color:inherit!important;cursor:pointer!important;
+ -webkit-appearance:none!important;appearance:none!important;background-image:none!important
+}
+.bspm-page a.bspm-stat::before,.bspm-page a.bspm-stat::after{content:none!important;display:none!important}
+.bspm-page a.bspm-stat .bspm-stat-number{display:block;font-size:2.1em;line-height:1.15;flex:none}
+.bspm-page a.bspm-stat .bspm-stat-label{display:block;font-weight:700;flex:none}
+.bspm-page a.bspm-stat .bspm-stat-help,.bspm-page a.bspm-stat .bspm-stat-action{display:block;flex:none;font-size:.85em}
+@media(max-width:550px){.bspm-page a.bspm-stat{padding:12px!important;min-height:124px!important}}
+
+.bspm-native-list[hidden]{display:none!important}
+.bspm-stat-other{border-left:4px solid #8273a1}
+.bspm-classic-link{margin:0 0 10px 0}
+
+.bspm-page #bspm-packages[data-active-filter="other"]{border-left-color:#8273a1}
