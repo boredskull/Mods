@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>BoredSkull:BBCodeManager</id>
+	<name>Advanced BBCode &amp; Editor Manager</name>
+	<version>1.0.2</version>
+	<type>modification</type>
+
+	<install for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<license type="file" parsebbc="false">license.txt</license>
+
+		<database>install.php</database>
+
+		<require-file name="Sources/BBCodeManager.php" destination="$sourcedir" />
+		<require-file name="Sources/BBCodeManager-Admin.php" destination="$sourcedir" />
+		<require-file name="Themes/default/BBCodeManager.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/bbcodemanager.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/bbcodemanager-editor.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/scripts/bbcodemanager-admin.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/languages/BBCodeManager.english.php" destination="$languagedir" />
+		<require-dir name="Themes/default/images/bbm" destination="$imagesdir" />
+
+		<hook hook="integrate_pre_include" function="$sourcedir/BBCodeManager.php" />
+		<hook hook="integrate_bbc_codes" function="BBM::bbcCodes" />
+		<hook hook="integrate_bbc_buttons" function="BBM::bbcButtons" />
+		<hook hook="integrate_preparsecode" function="BBM::preparse" />
+		<hook hook="integrate_load_theme" function="BBM::loadTheme" />
+		<hook hook="integrate_admin_areas" function="BBM::adminAreas" />
+		<hook hook="integrate_credits" function="BBM::credits" />
+
+		<redirect url="?action=admin;area=bbcmanager;sa=library" timeout="3000" />
+	</install>
+
+	<upgrade from="1.0.0" for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<require-file name="Sources/BBCodeManager.php" destination="$sourcedir" />
+		<require-file name="Sources/BBCodeManager-Admin.php" destination="$sourcedir" />
+		<require-file name="Themes/default/BBCodeManager.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/bbcodemanager.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/bbcodemanager-editor.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/scripts/bbcodemanager-admin.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/languages/BBCodeManager.english.php" destination="$languagedir" />
+	</upgrade>
+
+	<upgrade from="1.0.1" for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<require-file name="Sources/BBCodeManager.php" destination="$sourcedir" />
+		<require-file name="Sources/BBCodeManager-Admin.php" destination="$sourcedir" />
+		<require-file name="Themes/default/BBCodeManager.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/bbcodemanager.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/bbcodemanager-editor.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/scripts/bbcodemanager-admin.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/languages/BBCodeManager.english.php" destination="$languagedir" />
+	</upgrade>
+
+	<uninstall for="2.1.*">
+		<hook hook="integrate_pre_include" function="$sourcedir/BBCodeManager.php" reverse="true" />
+		<hook hook="integrate_bbc_codes" function="BBM::bbcCodes" reverse="true" />
+		<hook hook="integrate_bbc_buttons" function="BBM::bbcButtons" reverse="true" />
+		<hook hook="integrate_preparsecode" function="BBM::preparse" reverse="true" />
+		<hook hook="integrate_load_theme" function="BBM::loadTheme" reverse="true" />
+		<hook hook="integrate_admin_areas" function="BBM::adminAreas" reverse="true" />
+		<hook hook="integrate_credits" function="BBM::credits" reverse="true" />
+
+		<!-- Runs only when "Remove all data associated with this modification" is ticked -->
+		<database>uninstall.php</database>
+
+		<remove-file name="$sourcedir/BBCodeManager.php" />
+		<remove-file name="$sourcedir/BBCodeManager-Admin.php" />
+		<remove-file name="$themedir/BBCodeManager.template.php" />
+		<remove-file name="$themedir/css/bbcodemanager.css" />
+		<remove-file name="$themedir/scripts/bbcodemanager-editor.js" />
+		<remove-file name="$themedir/scripts/bbcodemanager-admin.js" />
+		<remove-file name="$languagedir/BBCodeManager.english.php" />
+	</uninstall>
+</package-info>
