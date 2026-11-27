@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>BoredSkull:BoardRules</id>
+	<name>Board Rules</name>
+	<version>1.0.3</version>
+	<type>modification</type>
+
+	<install for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<license type="file" parsebbc="false">license.txt</license>
+
+		<require-file name="Sources/BoardRules.php" destination="$sourcedir" />
+		<require-file name="Sources/BoardRulesAdmin.php" destination="$sourcedir" />
+		<require-file name="Themes/default/BoardRules.template.php" destination="$themedir" />
+		<require-file name="Themes/default/languages/BoardRules.english.php" destination="$languagedir" />
+		<require-file name="Themes/default/css/boardrules.css" destination="$themedir/css" />
+
+		<database>install.php</database>
+
+		<hook hook="integrate_pre_include" function="$sourcedir/BoardRules.php" />
+		<hook hook="integrate_actions" function="BoardRules_Actions" />
+		<hook hook="integrate_load_theme" function="BoardRules_LoadTheme" />
+		<hook hook="integrate_menu_buttons" function="BoardRules_MenuButtons" />
+		<hook hook="integrate_admin_areas" function="BoardRules_AdminAreas" />
+		<hook hook="integrate_credits" function="BoardRules_Credits" />
+		<hook hook="integrate_alert_types" function="BoardRules_AlertTypes" />
+		<hook hook="integrate_fetch_alerts" function="BoardRules_FetchAlerts" />
+		<hook hook="integrate_delete_members" function="BoardRules_DeleteMembers" />
+
+		<redirect url="?action=admin;area=boardrules;sa=settings" timeout="3000" />
+	</install>
+
+	<!-- Existing rules, acceptances and preferences remain intact. Adds the hook new in 1.0.3. -->
+	<upgrade for="2.1.*" from="1.0.1, 1.0.2">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<require-file name="Sources/BoardRules.php" destination="$sourcedir" />
+		<require-file name="Sources/BoardRulesAdmin.php" destination="$sourcedir" />
+		<require-file name="Themes/default/BoardRules.template.php" destination="$themedir" />
+		<require-file name="Themes/default/languages/BoardRules.english.php" destination="$languagedir" />
+		<require-file name="Themes/default/css/boardrules.css" destination="$themedir/css" />
+
+		<hook hook="integrate_delete_members" function="BoardRules_DeleteMembers" />
+	</upgrade>
+
+	<uninstall for="2.1.*">
+		<hook hook="integrate_pre_include" function="$sourcedir/BoardRules.php" reverse="true" />
+		<hook hook="integrate_actions" function="BoardRules_Actions" reverse="true" />
+		<hook hook="integrate_load_theme" function="BoardRules_LoadTheme" reverse="true" />
+		<hook hook="integrate_menu_buttons" function="BoardRules_MenuButtons" reverse="true" />
+		<hook hook="integrate_admin_areas" function="BoardRules_AdminAreas" reverse="true" />
+		<hook hook="integrate_credits" function="BoardRules_Credits" reverse="true" />
+		<hook hook="integrate_alert_types" function="BoardRules_AlertTypes" reverse="true" />
+		<hook hook="integrate_fetch_alerts" function="BoardRules_FetchAlerts" reverse="true" />
+		<hook hook="integrate_delete_members" function="BoardRules_DeleteMembers" reverse="true" />
+
+		<!-- Only runs when "Remove all data associated with this modification" is ticked. -->
+		<database>uninstall.php</database>
+
+		<remove-file name="$sourcedir/BoardRules.php" />
+		<remove-file name="$sourcedir/BoardRulesAdmin.php" />
+		<remove-file name="$themedir/BoardRules.template.php" />
+		<remove-file name="$languagedir/BoardRules.english.php" />
+		<remove-file name="$themedir/css/boardrules.css" />
+	</uninstall>
+</package-info>

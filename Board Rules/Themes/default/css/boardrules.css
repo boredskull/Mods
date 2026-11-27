@@ -1,0 +1,282 @@
+/* Board Rules - BoredSkull (c) 2026 - ISC License */
+
+/* Menu/admin icon (scroll/document) */
+.main_icons.boardrules::before {
+	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23557ea0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpolyline points='14 2 14 8 20 8'/%3E%3Cline x1='8' y1='13' x2='16' y2='13'/%3E%3Cline x1='8' y1='17' x2='14' y2='17'/%3E%3C/svg%3E") no-repeat center / 16px 16px;
+}
+.large_admin_menu_icon.boardrules::before,
+#admin_menu .main_icons.boardrules::before {
+	background-size: 16px 16px;
+}
+
+/* Rules page */
+.boardrules_intro {
+	margin-bottom: 10px;
+}
+.boardrules_introtext {
+	font-size: 1.05em;
+	line-height: 1.6;
+	margin-bottom: 10px;
+}
+.boardrules_toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	align-items: center;
+}
+.boardrules_toolbar input[type="search"] {
+	flex: 1 1 220px;
+	min-width: 160px;
+}
+.boardrules_toolbar .button {
+	margin: 0;
+}
+.boardrules_meta {
+	margin-top: 8px;
+	opacity: 0.8;
+}
+.boardrules_toc {
+	margin-bottom: 10px;
+}
+.boardrules_toc ol {
+	margin: 6px 0 0 20px;
+	columns: 2 220px;
+}
+.boardrules_toc li {
+	padding: 2px 0;
+	break-inside: avoid;
+}
+
+.boardrules_cat {
+	margin-bottom: 12px;
+}
+.boardrules_cat > summary,
+.boardrules_board > summary {
+	list-style: none;
+	cursor: pointer;
+}
+.boardrules_cat > summary::-webkit-details-marker,
+.boardrules_board > summary::-webkit-details-marker {
+	display: none;
+}
+.boardrules_cat > summary h4::after,
+.boardrules_board > summary h3::after {
+	content: "\25BE";
+	float: right;
+	transition: transform 0.15s ease;
+}
+.boardrules_cat:not([open]) > summary h4::after,
+.boardrules_board:not([open]) > summary h3::after {
+	transform: rotate(-90deg);
+}
+.boardrules_catdesc {
+	padding: 6px 10px;
+	font-style: italic;
+	opacity: 0.85;
+}
+
+.boardrules_list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.boardrules_rule {
+	margin: 4px 0 0;
+	border-left: 3px solid #557ea0;
+	transition: background-color 0.3s ease;
+}
+.boardrules_rule.boardrules_target {
+	border-left-color: #e08a1e;
+	box-shadow: 0 0 0 2px rgba(224, 138, 30, 0.35);
+}
+.boardrules_rule_head {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+	margin-bottom: 4px;
+}
+.boardrules_rule_title {
+	font-size: 1.05em;
+}
+.boardrules_num {
+	display: inline-block;
+	min-width: 2.2em;
+	padding: 1px 6px;
+	border-radius: 4px;
+	background: #557ea0;
+	color: #fff;
+	font-weight: bold;
+	font-size: 0.9em;
+	text-align: center;
+}
+.titlebg .boardrules_num {
+	min-width: 0;
+}
+.boardrules_anchor {
+	margin-left: auto;
+	opacity: 0;
+	text-decoration: none;
+	transition: opacity 0.15s ease;
+}
+.boardrules_rule:hover .boardrules_anchor,
+.boardrules_anchor:focus {
+	opacity: 0.6;
+}
+.boardrules_body {
+	line-height: 1.6;
+}
+.boardrules_applies {
+	margin-top: 6px;
+	opacity: 0.85;
+}
+
+.boardrules_penalty,
+.boardrules_badge {
+	display: inline-block;
+	padding: 1px 8px;
+	border-radius: 10px;
+	font-size: 0.8em;
+	font-weight: normal;
+	line-height: 1.6;
+	white-space: nowrap;
+	background: #f3e3e3;
+	color: #a33;
+	border: 1px solid #e3b8b8;
+}
+.boardrules_badge {
+	background: #e8eef3;
+	color: #335;
+	border-color: #c7d4df;
+	text-decoration: none;
+}
+.boardrules_badge.boardrules_on {
+	background: #e3f3e6;
+	color: #2a6b35;
+	border-color: #b8dcbf;
+}
+.boardrules_badge.boardrules_off {
+	background: #f3e3e3;
+	color: #a33;
+	border-color: #e3b8b8;
+}
+
+.boardrules_acceptbox {
+	margin: 12px 0;
+	text-align: center;
+}
+.boardrules_acceptbox p {
+	margin-bottom: 10px;
+}
+.boardrules_changelog ul {
+	margin: 0 0 0 18px;
+}
+.boardrules_changelog li {
+	padding: 3px 0;
+}
+
+/* Banner */
+.boardrules_notice {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+.boardrules_notice .button {
+	margin-left: auto;
+}
+
+/* Per-board box */
+.boardrules_board {
+	margin-bottom: 10px;
+}
+.boardrules_board_list {
+	list-style: none;
+	margin: 0 0 6px;
+	padding: 0;
+}
+.boardrules_board_list li {
+	padding: 4px 0 6px;
+	border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+}
+.boardrules_board_list li:last-child {
+	border-bottom: none;
+}
+
+/* Admin */
+.boardrules_admin_toolbar .button {
+	margin: 0 4px 0 0;
+}
+.boardrules_admin_cat {
+	margin-top: 12px;
+}
+.boardrules_admin_cat .button {
+	margin-top: -3px;
+}
+.boardrules_table {
+	margin-bottom: 4px;
+}
+.boardrules_actions a {
+	text-decoration: none;
+}
+.boardrules_dim {
+	opacity: 0.25;
+}
+.boardrules_boards {
+	min-width: 260px;
+	max-width: 100%;
+}
+.boardrules_editor {
+	margin: 10px 0;
+}
+.boardrules_notify {
+	margin: 12px 0;
+	padding: 10px;
+}
+.boardrules_notify > div,
+.boardrules_notify > label {
+	display: block;
+	margin: 4px 0;
+}
+.boardrules_stats {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	align-items: center;
+}
+.boardrules_stats > div strong {
+	display: block;
+	font-size: 1.6em;
+}
+.boardrules_meter {
+	position: relative;
+	flex: 1 1 200px;
+	height: 18px;
+	border-radius: 9px;
+	background: rgba(0, 0, 0, 0.08);
+	overflow: hidden;
+}
+.boardrules_meter span {
+	display: block;
+	height: 100%;
+	background: #557ea0;
+}
+.boardrules_meter em {
+	position: absolute;
+	top: 0;
+	right: 8px;
+	font-size: 0.8em;
+	line-height: 18px;
+	font-style: normal;
+}
+
+/* Print */
+@media print {
+	#top_section, #upper_section, #header, .navigate_section, #footer, .boardrules_noprint,
+	.boardrules_notice, .boardrules_anchor {
+		display: none !important;
+	}
+	.boardrules_rule {
+		break-inside: avoid;
+	}
+}
