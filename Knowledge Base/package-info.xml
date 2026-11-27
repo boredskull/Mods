@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info">
+ <id>BoredSkull:KnowledgeBase</id>
+ <name>Knowledge Base</name>
+ <version>1.0.4</version>
+ <type>modification</type>
+ <install for="2.1.0 - 2.1.99">
+  <readme type="file" parsebbc="false">README.md</readme>
+  <license type="file">LICENSE.txt</license>
+  <require-file name="Sources/KnowledgeBase.php" destination="$sourcedir" />
+  <require-file name="Sources/KnowledgeBase-Pages.php" destination="$sourcedir" />
+  <require-file name="Themes/default/KnowledgeBase.template.php" destination="$themedir" />
+  <require-file name="Themes/default/languages/KnowledgeBase.english.php" destination="$languagedir" />
+  <require-file name="Themes/default/css/knowledgebase.css" destination="$themedir/css" />
+  <database>install.php</database>
+  <redirect url="?action=knowledgebase;sa=manage" timeout="3000" />
+  <hook hook="integrate_actions" function="BoredKnowledgeBase::actions" file="$sourcedir/KnowledgeBase.php" />
+  <hook hook="integrate_menu_buttons" function="BoredKnowledgeBase::menuButtons" file="$sourcedir/KnowledgeBase.php" />
+  <hook hook="integrate_load_theme" function="BoredKnowledgeBase::loadTheme" file="$sourcedir/KnowledgeBase.php" />
+  <hook hook="integrate_load_permissions" function="BoredKnowledgeBase::permissions" file="$sourcedir/KnowledgeBase.php" />
+  <hook hook="integrate_load_illegal_guest_permissions" function="BoredKnowledgeBase::illegalGuestPermissions" file="$sourcedir/KnowledgeBase.php" />
+  <hook hook="integrate_admin_areas" function="BoredKnowledgeBase::adminAreas" file="$sourcedir/KnowledgeBase.php" />
+  <hook hook="integrate_prepare_display_context" function="BoredKnowledgeBase::prepareDisplayContext" file="$sourcedir/KnowledgeBase.php" />
+  <hook hook="integrate_credits" function="BoredKnowledgeBase::credits" file="$sourcedir/KnowledgeBase.php" />
+ </install>
+ <!-- Every earlier version: new files, plus the credits hook added in 1.0.4. Articles and settings are kept. -->
+ <upgrade from="1.0.0-1.0.3" for="2.1.0 - 2.1.99">
+  <readme type="file" parsebbc="false">README.md</readme>
+  <require-file name="Sources/KnowledgeBase.php" destination="$sourcedir" />
+  <require-file name="Sources/KnowledgeBase-Pages.php" destination="$sourcedir" />
+  <require-file name="Themes/default/KnowledgeBase.template.php" destination="$themedir" />
+  <require-file name="Themes/default/languages/KnowledgeBase.english.php" destination="$languagedir" />
+  <require-file name="Themes/default/css/knowledgebase.css" destination="$themedir/css" />
+  <database>install.php</database>
+  <hook hook="integrate_credits" function="BoredKnowledgeBase::credits" file="$sourcedir/KnowledgeBase.php" />
+  <redirect url="?action=knowledgebase;sa=manage" timeout="3000" />
+ </upgrade>
+ <uninstall for="2.1.0 - 2.1.99">
+  <hook hook="integrate_actions" function="BoredKnowledgeBase::actions" file="$sourcedir/KnowledgeBase.php" reverse="true" />
+  <hook hook="integrate_menu_buttons" function="BoredKnowledgeBase::menuButtons" file="$sourcedir/KnowledgeBase.php" reverse="true" />
+  <hook hook="integrate_load_theme" function="BoredKnowledgeBase::loadTheme" file="$sourcedir/KnowledgeBase.php" reverse="true" />
+  <hook hook="integrate_load_permissions" function="BoredKnowledgeBase::permissions" file="$sourcedir/KnowledgeBase.php" reverse="true" />
+  <hook hook="integrate_load_illegal_guest_permissions" function="BoredKnowledgeBase::illegalGuestPermissions" file="$sourcedir/KnowledgeBase.php" reverse="true" />
+  <hook hook="integrate_admin_areas" function="BoredKnowledgeBase::adminAreas" file="$sourcedir/KnowledgeBase.php" reverse="true" />
+  <hook hook="integrate_prepare_display_context" function="BoredKnowledgeBase::prepareDisplayContext" file="$sourcedir/KnowledgeBase.php" reverse="true" />
+  <remove-file name="$sourcedir/KnowledgeBase.php" />
+  <remove-file name="$sourcedir/KnowledgeBase-Pages.php" />
+  <remove-file name="$themedir/KnowledgeBase.template.php" />
+  <remove-file name="$languagedir/KnowledgeBase.english.php" />
+  <remove-file name="$themedir/css/knowledgebase.css" />
+  <database>uninstall.php</database>
+  <hook hook="integrate_credits" function="BoredKnowledgeBase::credits" file="$sourcedir/KnowledgeBase.php" reverse="true" />
+ </uninstall>
+</package-info>

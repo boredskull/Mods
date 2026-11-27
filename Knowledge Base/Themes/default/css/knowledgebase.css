@@ -1,0 +1,38 @@
+/* Knowledge Base uses Curve classes and theme colours; no theme edits required. */
+.kb-nav { display:flex; flex-wrap:wrap; gap:.5rem; margin:0 0 1rem; }
+.kb-card { background:var(--windowbg, transparent); color:inherit; border:1px solid rgba(110,125,145,.28); border-radius:.4rem; padding:1rem; margin:0 0 1rem; }
+.kb-card h2 { margin:0 0 .7rem; }
+.kb-card h3 { margin:0 0 .4rem; }
+.kb-card p { margin:.4rem 0 .75rem; }
+.kb-list-item { border-top:1px solid rgba(110,125,145,.2); padding:.9rem 0; }
+.kb-list-item:first-of-type { border-top:0; }
+.kb-list-item h3 { overflow-wrap:anywhere; }
+.kb-row { display:flex; align-items:flex-end; flex-wrap:wrap; gap:1rem; }
+.kb-field { flex:1 1 15rem; margin-bottom:1rem; }
+.kb-field label, .kb-field input, .kb-field textarea, .kb-field select { display:block; width:100%; box-sizing:border-box; }
+.kb-field label { font-weight:600; margin-bottom:.35rem; }
+.kb-row button { margin-bottom:1rem; }
+.kb-body { overflow-wrap:anywhere; margin:1rem 0; line-height:1.55; }
+.kb-body img { max-width:100%; height:auto; }
+.kb-summary { font-size:1.05em; }
+.kb-actions { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; }
+.kb-inline { display:inline-flex; gap:.3rem; }
+.kb-notice { padding:.65rem; border-inline-start:4px solid #4779a0; background:rgba(60,120,190,.1); }
+.kb-warning { padding:.65rem; border-inline-start:4px solid #b87625; background:rgba(184,118,37,.12); }
+.kb-category-form { margin:1rem 0; }
+.kb-category-form fieldset { border:1px solid rgba(110,125,145,.3); padding:1rem; }
+.kb-check { display:block; margin:.5rem 0 1rem; }
+.kb-check input { margin-inline-end:.4rem; }
+.kb-pagination { margin:1rem 0; display:flex; gap:.5rem; }
+.kb-promote { margin:1rem 0; border-inline-start:3px solid #4779a0; padding:.5rem .75rem; background:rgba(60,120,190,.07); }
+.kb-nav a:focus-visible,.kb-card button:focus-visible,.kb-card input:focus-visible,.kb-card textarea:focus-visible,.kb-card select:focus-visible,.kb-card a:focus-visible { outline:3px solid currentColor; outline-offset:3px; }
+@media (max-width: 640px) { .kb-card { padding:.75rem; } .kb-row { display:block; } }
+@media (prefers-reduced-motion: reduce) { .kb-card *, .kb-nav * { transition:none!important; animation:none!important; } }
+
+/* 1.0.1: alternate category form surfaces without changing theme colours. */
+.kb-category-form { margin:0; padding:1rem; border-radius:6px; }
+.kb-category-form:nth-of-type(odd) { background:rgba(100,130,160,.085); }
+.kb-category-form:nth-of-type(even) { background:rgba(100,130,160,.025); }
+.kb-category-form + .kb-category-form { margin-top:.5rem; }
+.kb-category-form fieldset { margin:0; min-width:0; border-radius:5px; }
+.kb-category-form:focus-within { outline:2px solid rgba(70,120,170,.45); outline-offset:1px; }
