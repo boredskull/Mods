@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>BoredSkull:QuestionsAnswers</id>
+	<name>Questions &amp; Answers</name>
+	<version>1.2.1</version>
+	<type>modification</type>
+
+	<install for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<license type="file" parsebbc="false">license.txt</license>
+
+		<require-file name="Sources/QuestionsAnswers.php" destination="$sourcedir" />
+		<require-file name="Sources/QuestionsAnswers-Pages.php" destination="$sourcedir" />
+		<require-file name="Themes/default/QuestionsAnswers.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/questionsanswers.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/questionsanswers.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/languages/QuestionsAnswers.english.php" destination="$languagedir" />
+
+		<database>install.php</database>
+
+		<hook hook="integrate_pre_include" function="$sourcedir/QuestionsAnswers.php" />
+		<hook hook="integrate_actions" function="QA::actions" />
+		<hook hook="integrate_menu_buttons" function="QA::menuButtons" />
+		<hook hook="integrate_load_theme" function="QA::loadTheme" />
+		<hook hook="integrate_display_message_list" function="QA::displayMessageList" />
+		<hook hook="integrate_prepare_display_context" function="QA::prepareDisplayContext" />
+		<hook hook="integrate_post_end" function="QA::postEnd" />
+		<hook hook="integrate_create_topic" function="QA::afterCreateTopic" />
+		<hook hook="integrate_remove_topics_before" function="QA::beforeRemoveTopics" />
+		<hook hook="integrate_remove_topics" function="QA::removeTopics" />
+		<hook hook="integrate_remove_message" function="QA::removeMessage" />
+		<hook hook="integrate_delete_members" function="QA::deleteMembers" />
+		<hook hook="integrate_profile_areas" function="QA::profileAreas" />
+		<hook hook="integrate_fetch_alerts" function="QA::fetchAlerts" />
+		<hook hook="integrate_load_permissions" function="QA::loadPermissions" />
+		<hook hook="integrate_load_illegal_guest_permissions" function="QA::illegalGuestPermissions" />
+		<hook hook="integrate_admin_areas" function="QA::adminAreas" />
+		<hook hook="integrate_credits" function="QA::credits" />
+
+		<redirect url="?action=admin;area=questionsanswers;sa=boards" timeout="3000" />
+	</install>
+
+	<upgrade from="1.2.0" for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<require-file name="Sources/QuestionsAnswers.php" destination="$sourcedir" />
+		<require-file name="Sources/QuestionsAnswers-Pages.php" destination="$sourcedir" />
+		<require-file name="Themes/default/QuestionsAnswers.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/questionsanswers.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/questionsanswers.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/languages/QuestionsAnswers.english.php" destination="$languagedir" />
+		<database>upgrade.php</database>
+	</upgrade>
+
+	<upgrade from="1.1.2" for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<require-file name="Sources/QuestionsAnswers.php" destination="$sourcedir" />
+		<require-file name="Sources/QuestionsAnswers-Pages.php" destination="$sourcedir" />
+		<require-file name="Themes/default/QuestionsAnswers.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/questionsanswers.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/questionsanswers.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/languages/QuestionsAnswers.english.php" destination="$languagedir" />
+		<database>upgrade.php</database>
+	</upgrade>
+
+	<upgrade from="1.0.0" for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<require-file name="Sources/QuestionsAnswers.php" destination="$sourcedir" />
+		<require-file name="Sources/QuestionsAnswers-Pages.php" destination="$sourcedir" />
+		<require-file name="Themes/default/QuestionsAnswers.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/questionsanswers.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/questionsanswers.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/languages/QuestionsAnswers.english.php" destination="$languagedir" />
+		<hook hook="integrate_remove_topics_before" function="QA::beforeRemoveTopics" />
+		<hook hook="integrate_after_create_post" function="QA::afterCreatePost" reverse="true" />
+		<hook hook="integrate_create_topic" function="QA::afterCreateTopic" />
+			<database>upgrade.php</database>
+	</upgrade>
+
+	<upgrade from="1.0.1" for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<require-file name="Sources/QuestionsAnswers.php" destination="$sourcedir" />
+		<require-file name="Sources/QuestionsAnswers-Pages.php" destination="$sourcedir" />
+		<require-file name="Themes/default/QuestionsAnswers.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/questionsanswers.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/questionsanswers.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/languages/QuestionsAnswers.english.php" destination="$languagedir" />
+		<hook hook="integrate_after_create_post" function="QA::afterCreatePost" reverse="true" />
+		<hook hook="integrate_create_topic" function="QA::afterCreateTopic" />
+			<database>upgrade.php</database>
+	</upgrade>
+
+	<upgrade from="1.1.0" for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<require-file name="Sources/QuestionsAnswers.php" destination="$sourcedir" />
+		<require-file name="Sources/QuestionsAnswers-Pages.php" destination="$sourcedir" />
+		<require-file name="Themes/default/QuestionsAnswers.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/questionsanswers.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/questionsanswers.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/languages/QuestionsAnswers.english.php" destination="$languagedir" />
+			<database>upgrade.php</database>
+	</upgrade>
+
+	<upgrade from="1.1.1" for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<require-file name="Sources/QuestionsAnswers.php" destination="$sourcedir" />
+		<require-file name="Sources/QuestionsAnswers-Pages.php" destination="$sourcedir" />
+		<require-file name="Themes/default/QuestionsAnswers.template.php" destination="$themedir" />
+		<require-file name="Themes/default/css/questionsanswers.css" destination="$themedir/css" />
+		<require-file name="Themes/default/scripts/questionsanswers.js" destination="$themedir/scripts" />
+		<require-file name="Themes/default/languages/QuestionsAnswers.english.php" destination="$languagedir" />
+			<database>upgrade.php</database>
+	</upgrade>
+
+	<uninstall for="2.1.*">
+		<hook hook="integrate_pre_include" function="$sourcedir/QuestionsAnswers.php" reverse="true" />
+		<hook hook="integrate_actions" function="QA::actions" reverse="true" />
+		<hook hook="integrate_menu_buttons" function="QA::menuButtons" reverse="true" />
+		<hook hook="integrate_load_theme" function="QA::loadTheme" reverse="true" />
+		<hook hook="integrate_display_message_list" function="QA::displayMessageList" reverse="true" />
+		<hook hook="integrate_prepare_display_context" function="QA::prepareDisplayContext" reverse="true" />
+		<hook hook="integrate_post_end" function="QA::postEnd" reverse="true" />
+		<hook hook="integrate_create_topic" function="QA::afterCreateTopic" reverse="true" />
+		<hook hook="integrate_remove_topics_before" function="QA::beforeRemoveTopics" reverse="true" />
+		<hook hook="integrate_remove_topics" function="QA::removeTopics" reverse="true" />
+		<hook hook="integrate_remove_message" function="QA::removeMessage" reverse="true" />
+		<hook hook="integrate_delete_members" function="QA::deleteMembers" reverse="true" />
+		<hook hook="integrate_profile_areas" function="QA::profileAreas" reverse="true" />
+		<hook hook="integrate_fetch_alerts" function="QA::fetchAlerts" reverse="true" />
+		<hook hook="integrate_load_permissions" function="QA::loadPermissions" reverse="true" />
+		<hook hook="integrate_load_illegal_guest_permissions" function="QA::illegalGuestPermissions" reverse="true" />
+		<hook hook="integrate_admin_areas" function="QA::adminAreas" reverse="true" />
+		<hook hook="integrate_credits" function="QA::credits" reverse="true" />
+
+		<!-- Runs only when "Remove all data associated with this modification" is ticked.
+		     Topics and posts are kept. -->
+		<database>uninstall.php</database>
+
+		<remove-file name="$sourcedir/QuestionsAnswers.php" />
+		<remove-file name="$sourcedir/QuestionsAnswers-Pages.php" />
+		<remove-file name="$themedir/QuestionsAnswers.template.php" />
+		<remove-file name="$themedir/css/questionsanswers.css" />
+		<remove-file name="$themedir/scripts/questionsanswers.js" />
+		<remove-file name="$languagedir/QuestionsAnswers.english.php" />
+	</uninstall>
+</package-info>
