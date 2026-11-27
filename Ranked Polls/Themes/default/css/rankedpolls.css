@@ -1,0 +1,174 @@
+/**
+ * Ranked Polls
+ * BoredSkull https://boredskull.net (c) 2026, ISC licence
+ *
+ * Text uses the theme's colour and backgrounds are translucent, so this
+ * suits light and dark themes. Override --rp-accent to recolour.
+ */
+
+.rp_block {
+	--rp-accent: #3d7fb8;
+	--rp-win: #3c8f4e;
+	--rp-line: rgba(127, 127, 127, 0.3);
+	--rp-soft: rgba(127, 127, 127, 0.08);
+	margin-bottom: 1em;
+}
+.rp_question { margin: 0 0 0.4em; font-size: 1.15em; }
+.rp_meta { list-style: none; margin: 0 0 1em; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4em 1em; font-size: 0.85em; opacity: 0.85; align-items: center; }
+.rp_tag { display: inline-block; padding: 0.1em 0.6em; border-radius: 1em; border: 1px solid var(--rp-accent, #3d7fb8); font-weight: bold; font-size: 0.85em; }
+.rp_note { opacity: 0.8; font-style: italic; }
+.rp_buttons { margin-top: 1em; display: flex; flex-wrap: wrap; gap: 0.4em; }
+
+/* ===== Ballot ===== */
+.rp_ballot_form { margin-bottom: 1.2em; }
+.rp_cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2em; margin: 0.6em 0 0.8em; }
+.rp_col h5 { margin: 0 0 0.4em; font-size: 0.95em; }
+.rp_ranked, .rp_pool {
+	list-style: none;
+	margin: 0;
+	padding: 0.4em;
+	min-height: 3em;
+	border: 1px dashed var(--rp-line);
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	gap: 0.35em;
+}
+.rp_ranked.rp_drop, .rp_pool.rp_drop { border-color: var(--rp-accent); background: rgba(61, 127, 184, 0.07); }
+.rp_ranked li {
+	display: flex;
+	align-items: center;
+	gap: 0.55em;
+	padding: 0.45em 0.6em;
+	border: 1px solid var(--rp-line);
+	border-left: 3px solid var(--rp-accent);
+	border-radius: 6px;
+	background: var(--rp-soft);
+	cursor: grab;
+}
+.rp_ranked li:focus-visible, .rp_add:focus-visible, .rp_tools button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.rp_ranked li.rp_dragging, .rp_pool li.rp_dragging { opacity: 0.4; }
+.rp_pos {
+	flex: 0 0 auto;
+	width: 1.7em;
+	height: 1.7em;
+	line-height: 1.7em;
+	text-align: center;
+	border-radius: 50%;
+	background: var(--rp-accent);
+	color: #fff;
+	font-weight: bold;
+	font-size: 0.85em;
+}
+.rp_handle { opacity: 0.45; letter-spacing: -0.3em; font-size: 0.85em; }
+.rp_item_label { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.rp_tools { display: flex; gap: 0.2em; flex: 0 0 auto; }
+.rp_tools button {
+	min-width: 2em;
+	min-height: 2em;
+	border: 1px solid var(--rp-line);
+	border-radius: 4px;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	font-size: 0.8em;
+}
+.rp_tools button:disabled { opacity: 0.3; cursor: default; }
+.rp_tools button:not(:disabled):hover { background: rgba(127, 127, 127, 0.15); }
+.rp_add {
+	display: flex;
+	align-items: center;
+	gap: 0.55em;
+	width: 100%;
+	padding: 0.45em 0.6em;
+	border: 1px solid var(--rp-line);
+	border-radius: 6px;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	text-align: left;
+	cursor: pointer;
+}
+.rp_add:hover { background: rgba(127, 127, 127, 0.1); }
+.rp_plus { width: 1.7em; text-align: center; font-weight: bold; opacity: 0.6; }
+.rp_empty, .rp_all { margin: 0.4em 0 0; opacity: 0.7; }
+.rp_clear { margin-top: 0.5em; }
+.rp_live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.rp_ballot_error { color: #c0392b; font-weight: bold; margin: 0.4em 0; }
+.rp_fallback_table td { padding: 0.2em 0.6em 0.2em 0; }
+.rp_voted { padding: 0.6em 0.9em; border-left: 3px solid var(--rp-win); background: var(--rp-soft); border-radius: 4px; margin-bottom: 1em; }
+.rp_my_ranking { margin: 0.4em 0 0 1.4em; }
+.rp_change { margin-bottom: 1em; }
+.rp_change > summary { cursor: pointer; font-weight: bold; }
+
+/* ===== Results ===== */
+.rp_results_title { margin: 0.6em 0; }
+.rp_winner {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.3em 0.8em;
+	padding: 0.7em 1em;
+	margin-bottom: 0.8em;
+	border-radius: 8px;
+	border: 1px solid var(--rp-win);
+	background: rgba(60, 143, 78, 0.1);
+}
+.rp_winner_label { text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.8em; font-weight: bold; color: var(--rp-win); }
+.rp_winner_name { font-size: 1.2em; font-weight: bold; }
+
+.rp_round_nav { display: flex; flex-wrap: wrap; gap: 0.3em; margin-bottom: 0.6em; align-items: center; }
+.rp_tab {
+	padding: 0.25em 0.8em;
+	border: 1px solid var(--rp-line);
+	border-radius: 1em;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	font: inherit;
+	font-size: 0.85em;
+}
+.rp_tab_active { background: var(--rp-accent); border-color: var(--rp-accent); color: #fff; }
+.rp_round { margin-bottom: 0.8em; }
+.rp_round_title { margin: 0.4em 0; font-size: 0.95em; }
+.rp_bars { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.55em; }
+.rp_bar_label { display: flex; justify-content: space-between; gap: 1em; font-size: 0.92em; margin-bottom: 0.2em; }
+.rp_bar_value { white-space: nowrap; opacity: 0.85; font-variant-numeric: tabular-nums; }
+.rp_track { position: relative; height: 0.9em; border-radius: 1em; background: rgba(127, 127, 127, 0.18); overflow: hidden; }
+.rp_track::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 0;
+	bottom: 0;
+	border-left: 2px dashed rgba(127, 127, 127, 0.75);
+}
+.rp_fill { height: 100%; border-radius: inherit; background: var(--rp-accent); transition: width 0.4s ease; }
+.rp_is_winner .rp_fill { background: var(--rp-win); }
+.rp_is_winner .rp_bar_label span:first-child { font-weight: bold; }
+.rp_is_eliminated .rp_fill { background: #c0392b; opacity: 0.7; }
+.rp_is_eliminated .rp_bar_label span:first-child { text-decoration: line-through; }
+.rp_is_out { opacity: 0.45; }
+.rp_is_out .rp_bar_label span:first-child { text-decoration: line-through; }
+.rp_round_stats { margin: 0.5em 0 0.3em; }
+.rp_round_outcome p { margin: 0.3em 0; }
+.rp_summary { margin-top: 0.8em; }
+.rp_summary > summary { cursor: pointer; font-weight: bold; }
+.rp_summary table { margin-top: 0.4em; }
+
+/* ===== Poll form ===== */
+.rp_form { margin-top: 0.6em; border-top: 1px solid var(--rp-line, rgba(127, 127, 127, 0.3)); padding-top: 0.6em; }
+
+/* ===== Admin ===== */
+.rp_board_list { max-height: 320px; overflow-y: auto; border: 1px solid rgba(127, 127, 127, 0.3); border-radius: 6px; padding: 0.4em 0.6em; }
+.rp_board_list label, .rp_board_cat { display: block; }
+.rp_board_cat { margin-top: 0.4em; }
+
+@media (max-width: 700px) {
+	.rp_cols { grid-template-columns: 1fr; }
+	.rp_tools button { min-width: 2.4em; min-height: 2.4em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.rp_fill { transition: none; }
+}
