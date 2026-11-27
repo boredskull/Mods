@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info.dtd">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+  <id>boredskull:hide-banned-members</id>
+  <name>Hide Banned Members</name>
+  <version>1.0.2</version>
+  <type>modification</type>
+  <install for="2.1 - 2.1.99">
+    <require-file name="Sources/BsHideBannedMembers.php" destination="$sourcedir" />
+    <require-file name="Themes/default/languages/BsHideBannedMembers.english.php" destination="$languagedir" />
+    <hook hook="integrate_pre_css_output" function="bshbm_filter_memberlist" file="$sourcedir/BsHideBannedMembers.php" />
+    <hook hook="integrate_member_list" function="bshbm_admin_member_list" file="$sourcedir/BsHideBannedMembers.php" />
+    <hook hook="integrate_manage_members" function="bshbm_register_members_settings" file="$sourcedir/BsHideBannedMembers.php" />
+    <hook hook="integrate_member_context" function="bshbm_member_context" file="$sourcedir/BsHideBannedMembers.php" />
+  </install>
+  <uninstall for="2.1 - 2.1.99">
+    <hook hook="integrate_pre_css_output" function="bshbm_filter_memberlist" file="$sourcedir/BsHideBannedMembers.php" reverse="true" />
+    <hook hook="integrate_member_list" function="bshbm_admin_member_list" file="$sourcedir/BsHideBannedMembers.php" reverse="true" />
+    <hook hook="integrate_member_context" function="bshbm_member_context" file="$sourcedir/BsHideBannedMembers.php" reverse="true" />
+    <hook hook="integrate_manage_members" function="bshbm_register_members_settings" file="$sourcedir/BsHideBannedMembers.php" reverse="true" />
+    <remove-file name="$sourcedir/BsHideBannedMembers.php" />
+    <remove-file name="$languagedir/BsHideBannedMembers.english.php" />
+  </uninstall>
+</package-info>
