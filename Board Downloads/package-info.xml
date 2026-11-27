@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info">
+ <id>BoredSkull:BoardDownloads</id>
+ <name>Board Downloads</name>
+ <version>1.3.0</version>
+ <type>modification</type>
+ <install for="2.1.0 - 2.1.99">
+  <require-file name="Sources/BoardDownloadsTraditional.php" destination="$sourcedir" />
+  <require-file name="Themes/default/BoardDownloadsTraditional.template.php" destination="$themedir" />
+  <readme type="file" parsebbc="false">README.md</readme>
+  <license type="file">LICENSE.txt</license>
+  <require-file name="Sources/BoardDownloads.php" destination="$sourcedir" />
+  <require-file name="Themes/default/BoardDownloads.template.php" destination="$themedir" />
+  <require-file name="Themes/default/languages/BoardDownloads.english.php" destination="$languagedir" />
+  <require-file name="Themes/default/css/board_downloads.css" destination="$themedir/css" />
+  <database>install.php</database>
+  <hook hook="integrate_modify_modifications" function="BoredBoardDownloads::hooksModifications" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_actions" function="BoredBoardDownloads::hooksActions" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_menu_buttons" function="BoredBoardDownloads::hooksMenu" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_admin_areas" function="BoredBoardDownloads::hooksAdmin" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_load_permissions" function="BoredBoardDownloads::hooksPermissions" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_load_theme" function="BoredBoardDownloads::hooksTheme" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_ci_providers" function="BoredBoardDownloads::insightsProvider" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_community_digest_sections" function="BoredBoardDownloads::digestSections" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_activity_stream_types" function="BoredBoardDownloads::activityTypes" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_activity_stream_fetch" function="BoredBoardDownloads::activityFetch" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_load_illegal_guest_permissions" function="BoredBoardDownloads::hooksIllegalGuestPermissions" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_credits" function="BoredBoardDownloads::hooksCredits" file="$sourcedir/BoardDownloads.php" />
+ </install>
+ <upgrade from="1.1.0 - 1.3.0" for="2.1.0 - 2.1.99">
+  <require-file name="Sources/BoardDownloadsTraditional.php" destination="$sourcedir" />
+  <require-file name="Themes/default/BoardDownloadsTraditional.template.php" destination="$themedir" />
+  <require-file name="Sources/BoardDownloads.php" destination="$sourcedir" />
+  <require-file name="Themes/default/BoardDownloads.template.php" destination="$themedir" />
+  <require-file name="Themes/default/languages/BoardDownloads.english.php" destination="$languagedir" />
+  <require-file name="Themes/default/css/board_downloads.css" destination="$themedir/css" />
+  <database>install.php</database>
+  <hook hook="integrate_modify_modifications" function="BoredBoardDownloads::hooksModifications" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_actions" function="BoredBoardDownloads::hooksActions" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_menu_buttons" function="BoredBoardDownloads::hooksMenu" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_admin_areas" function="BoredBoardDownloads::hooksAdmin" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_load_permissions" function="BoredBoardDownloads::hooksPermissions" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_load_theme" function="BoredBoardDownloads::hooksTheme" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_ci_providers" function="BoredBoardDownloads::insightsProvider" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_community_digest_sections" function="BoredBoardDownloads::digestSections" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_activity_stream_types" function="BoredBoardDownloads::activityTypes" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_activity_stream_fetch" function="BoredBoardDownloads::activityFetch" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_load_illegal_guest_permissions" function="BoredBoardDownloads::hooksIllegalGuestPermissions" file="$sourcedir/BoardDownloads.php" />
+  <hook hook="integrate_credits" function="BoredBoardDownloads::hooksCredits" file="$sourcedir/BoardDownloads.php" />
+ </upgrade>
+ <uninstall for="2.1.0 - 2.1.99">
+  <hook hook="integrate_modify_modifications" function="BoredBoardDownloads::hooksModifications" file="$sourcedir/BoardDownloads.php" reverse="true" />
+  <hook hook="integrate_actions" function="BoredBoardDownloads::hooksActions" file="$sourcedir/BoardDownloads.php" reverse="true" />
+  <hook hook="integrate_menu_buttons" function="BoredBoardDownloads::hooksMenu" file="$sourcedir/BoardDownloads.php" reverse="true" />
+  <hook hook="integrate_admin_areas" function="BoredBoardDownloads::hooksAdmin" file="$sourcedir/BoardDownloads.php" reverse="true" />
+  <hook hook="integrate_load_permissions" function="BoredBoardDownloads::hooksPermissions" file="$sourcedir/BoardDownloads.php" reverse="true" />
+  <hook hook="integrate_load_theme" function="BoredBoardDownloads::hooksTheme" file="$sourcedir/BoardDownloads.php" reverse="true" />
+  <hook hook="integrate_ci_providers" function="BoredBoardDownloads::insightsProvider" file="$sourcedir/BoardDownloads.php" reverse="true" />
+  <hook hook="integrate_community_digest_sections" function="BoredBoardDownloads::digestSections" file="$sourcedir/BoardDownloads.php" reverse="true" />
+  <hook hook="integrate_activity_stream_types" function="BoredBoardDownloads::activityTypes" file="$sourcedir/BoardDownloads.php" reverse="true" />
+  <hook hook="integrate_activity_stream_fetch" function="BoredBoardDownloads::activityFetch" file="$sourcedir/BoardDownloads.php" reverse="true" />
+  <hook hook="integrate_load_illegal_guest_permissions" function="BoredBoardDownloads::hooksIllegalGuestPermissions" file="$sourcedir/BoardDownloads.php" reverse="true" />
+  <hook hook="integrate_credits" function="BoredBoardDownloads::hooksCredits" file="$sourcedir/BoardDownloads.php" reverse="true" />
+  <remove-file name="$sourcedir/BoardDownloadsTraditional.php" />
+  <remove-file name="$themedir/BoardDownloadsTraditional.template.php" />
+  <remove-file name="$sourcedir/BoardDownloads.php" />
+  <remove-file name="$themedir/BoardDownloads.template.php" />
+  <remove-file name="$languagedir/BoardDownloads.english.php" />
+  <remove-file name="$themedir/css/board_downloads.css" />
+ </uninstall>
+</package-info>
