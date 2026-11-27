@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>BoredSkull:MentionsExpanded</id>
+	<name>Mentions Expanded</name>
+	<version>1.1.1</version>
+	<type>modification</type>
+
+	<install for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<license type="file" parsebbc="false">license.txt</license>
+
+		<require-file name="Sources/MentionsExpanded.php" destination="$sourcedir" />
+		<require-file name="Sources/tasks/MentionsExpanded-Notify.php" destination="$sourcedir/tasks" />
+		<require-file name="Themes/default/MentionsExpanded.template.php" destination="$themedir" />
+		<require-file name="Themes/default/languages/MentionsExpanded.english.php" destination="$languagedir" />
+
+		<database>install.php</database>
+
+		<hook hook="integrate_after_create_post" function="mex_after_create_post" file="$sourcedir/MentionsExpanded.php" />
+		<hook hook="integrate_modify_post" function="mex_modify_post" file="$sourcedir/MentionsExpanded.php" />
+		<hook hook="integrate_post_parsebbc" function="mex_post_parsebbc" file="$sourcedir/MentionsExpanded.php" />
+		<hook hook="integrate_load_theme" function="mex_load_theme" file="$sourcedir/MentionsExpanded.php" />
+		<hook hook="integrate_load_permissions" function="mex_load_permissions" file="$sourcedir/MentionsExpanded.php" />
+		<hook hook="integrate_load_illegal_guest_permissions" function="mex_illegal_guest_permissions" file="$sourcedir/MentionsExpanded.php" />
+		<hook hook="integrate_admin_areas" function="mex_admin_areas" file="$sourcedir/MentionsExpanded.php" />
+		<hook hook="integrate_modify_modifications" function="mex_modify_modifications" file="$sourcedir/MentionsExpanded.php" />
+		<hook hook="integrate_credits" function="mex_credits" file="$sourcedir/MentionsExpanded.php" />
+
+		<redirect url="?action=admin;area=modsettings;sa=mentionsexpanded" timeout="3000" />
+	</install>
+
+	<!-- Non-destructive upgrade preserves previous target logs, settings and queued tasks. -->
+	<upgrade from="1.0.*, 1.1.0" for="2.1.*">
+		<readme type="file" parsebbc="true">readme.txt</readme>
+		<database>upgrade.php</database>
+		<require-file name="Sources/MentionsExpanded.php" destination="$sourcedir" />
+		<require-file name="Sources/tasks/MentionsExpanded-Notify.php" destination="$sourcedir/tasks" />
+		<require-file name="Themes/default/MentionsExpanded.template.php" destination="$themedir" />
+		<require-file name="Themes/default/languages/MentionsExpanded.english.php" destination="$languagedir" />
+	</upgrade>
+
+	<uninstall for="2.1.*">
+		<hook reverse="true" hook="integrate_after_create_post" function="mex_after_create_post" file="$sourcedir/MentionsExpanded.php" />
+		<hook reverse="true" hook="integrate_modify_post" function="mex_modify_post" file="$sourcedir/MentionsExpanded.php" />
+		<hook reverse="true" hook="integrate_post_parsebbc" function="mex_post_parsebbc" file="$sourcedir/MentionsExpanded.php" />
+		<hook reverse="true" hook="integrate_load_theme" function="mex_load_theme" file="$sourcedir/MentionsExpanded.php" />
+		<hook reverse="true" hook="integrate_load_permissions" function="mex_load_permissions" file="$sourcedir/MentionsExpanded.php" />
+		<hook reverse="true" hook="integrate_load_illegal_guest_permissions" function="mex_illegal_guest_permissions" file="$sourcedir/MentionsExpanded.php" />
+		<hook reverse="true" hook="integrate_admin_areas" function="mex_admin_areas" file="$sourcedir/MentionsExpanded.php" />
+		<hook reverse="true" hook="integrate_modify_modifications" function="mex_modify_modifications" file="$sourcedir/MentionsExpanded.php" />
+		<hook reverse="true" hook="integrate_credits" function="mex_credits" file="$sourcedir/MentionsExpanded.php" />
+
+		<!-- Always remove pending tasks before deleting their task class. -->
+		<code type="file">uninstall-task.php</code>
+		<!-- SMF only executes this for explicit removal of database data. -->
+		<database>uninstall.php</database>
+
+		<remove-file name="$sourcedir/MentionsExpanded.php" />
+		<remove-file name="$sourcedir/tasks/MentionsExpanded-Notify.php" />
+		<remove-file name="$themedir/MentionsExpanded.template.php" />
+		<remove-file name="$languagedir/MentionsExpanded.english.php" />
+	</uninstall>
+</package-info>
